@@ -1,0 +1,35 @@
+{% extends 'AppBundle::Backoffice/Kitchen/adminkitchenpage.html.twig' %}
+
+{% block title %}{{ parent() }} - مطبخ{% endblock %}
+
+{% block form %}
+
+
+    <h2 class="text-center">Modifier une catégorie de Cuisine </h2>
+    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.lib, "Libellé", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        <div class="col-sm-6">
+            {# Génération de l'input. #}
+            {{ form_widget(form.lib, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-4 col-sm-4">
+            <div style="text-align: center;">
+                <a href="{{ path('jamilati_admin_kitchen')}}"> <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-chevron-left"></span>Retour</button></a>
+                &nbsp;
+                <button type="submit" class="btn btn-primary" ><span class="glyphicon glyphicon-ok"></span> Modifier </button>
+            </div>
+        </div>
+    </div>
+
+
+    {# Fermeture de la balise <form> du formulaire HTML #}
+    {{ form_end(form) }}
+
+
+{% endblock %}

@@ -1,0 +1,53 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/security.html
+security:
+    access_denied_url :    /error403
+    
+    encoders:
+        Symfony\Component\Security\Core\User\User:
+            algorithm: bcrypt
+            cost: 12
+    
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+
+    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        in_memory:
+            memory:
+                users:
+                    nour:
+                        password: $2y$12$9u0LPItVywaZI96YQNGTRuSVJ8ohMH.43ByVLZdgJC9Uk1NVa7e1C
+                        roles: 'ROLE_ADMIN'
+                    admin:
+                        password: $2y$12$/UXu1XGu810qQDLTr3J2VuiZRziPeXtc73IQpODggymtjDfGvRY6q
+                        roles: 'ROLE_ADMIN'
+    
+    
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        securedarea:
+            pattern: .*
+            anonymous: true
+            provider: in_memory
+            form_login:
+                login_path: login
+                check_path: login
+            logout:
+                path: /logout   # activate different ways to authenticate
+
+            # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            #http_basic: ~
+
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+            #form_login: ~
+    
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }

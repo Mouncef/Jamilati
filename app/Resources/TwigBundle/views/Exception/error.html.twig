@@ -1,0 +1,15 @@
+{# app/Resources/TwigBundle/views/Exception/error404.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Hadi ERROR</h1>
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {# ... #}
+    {% endif %}
+
+    <p>
+        FICHER ERROR HTML TWIG
+        <a href="{{ path('jamilati_homepage') }}">wa TA SIIIIIIIIIIIIIR</a>.
+    </p>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'AppBundle:Frontoffice:Health/index.html.twig' %}
+
+{% block REF %}
+    <meta name="keywords" content="جميلتي, صحة ">
+    <meta name="description" content="{{ health.content1[:150] }}" />
+{% endblock %}
+
+{% block title %}{{ health.titre }}{% endblock %}
+
+{% block view_article %}
+    <style>
+        .article {
+            font-family: 'Changa', sans-serif;
+            position: relative;
+            top: -40px;
+        }
+        .article-titre {
+            color: #010101;
+        }
+        .list .list-item {
+            list-style-type: disc;
+            color: #000000;
+        }
+        .list, .list-item{
+            direction: rtl;
+            border: none;
+            margin: 10px;
+        }
+
+    </style>
+    {% if health %}
+
+        <div class="row article">
+            <div class="col-md-12">
+                <h1 align="center" class="article-titre">{{ health.titre }}</h1>
+                <img src="{{ asset('uploads/Health/Cover/'~health.filename) }}" alt="{{ health.filename }}" class="img-responsive" style="padding: 0 35px;" />
+                <br />
+                <div>
+                    <span class="label label-health" dir="rtl">{{ health.date|date('d-m-Y') }}</span>
+
+                    <div class="pull-right">
+                        <span class="label label-health" dir="rtl">حرر من طرف {{ health.user }}</span>
+                    </div>
+                </div>
+                <br />
+                <p>{{ health.content1|nl2br }}</p>
+                <br />
+                {% if health.content2 %}<p>{{ health.content2|nl2br }}</p><br />{% endif %}
+                {% if health.content3 %}<p>{{ health.content3|nl2br }}</p><br />{% endif %}
+                <ul class="list">
+                    {% if health.listcontent1 %}<li class="list-item"><b>{{ health.listtitre1 }} :</b> {{ health.listcontent1 }} </li>{% endif %}
+                    {% if health.listcontent2 %}<li class="list-item"><b>{{ health.listtitre2 }} :</b> {{ health.listcontent2 }} </li>{% endif %}
+                    {% if health.listcontent3 %}<li class="list-item"><b>{{ health.listtitre3 }} :</b> {{ health.listcontent3 }} </li>{% endif %}
+                </ul>
+                <br />
+                <hr>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

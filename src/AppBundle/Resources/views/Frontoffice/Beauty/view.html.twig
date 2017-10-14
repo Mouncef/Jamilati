@@ -1,0 +1,59 @@
+{% extends 'AppBundle:Frontoffice:Beauty/index.html.twig' %}
+
+
+{% block REF %}
+    <meta name="keywords" content="جميلتي, جمال ">
+    <meta name="description" content="{{ beauty.content1[:150] }}" />
+{% endblock %}
+
+{% block title %}{{ beauty.titre }}{% endblock %}
+{% block view_article %}
+    <style>
+        .article {
+            font-family: 'Changa', sans-serif;
+            position: relative;
+            top: -40px;
+        }
+        .article-titre {
+            color: #010101;
+        }
+        .list .list-item {
+            list-style-type: disc;
+            color: #000000;
+        }
+        .list, .list-item{
+            direction: rtl;
+            border: none;
+            margin: 10px;
+        }
+
+    </style>
+    {% if beauty %}
+
+        <div class="row article">
+            <div class="col-md-12">
+                <h1 align="center" class="article-titre">{{ beauty.titre }}</h1>
+                <img src="{{ asset('uploads/Beauty/Cover/'~beauty.filename) }}" alt="{{ beauty.filename }}" class="img-responsive" style="padding: 0 35px;" />
+                <br />
+                <div>
+                    <span class="label label-beauty" dir="rtl">{{ beauty.date|date('d-m-Y') }}</span>
+
+                    <div class="pull-right">
+                    	<span class="label label-beauty" dir="rtl">حرر من طرف {{ beauty.user }}</span>
+                    </div>
+                </div>
+                <br />
+                <p>{{ beauty.content1|nl2br }}</p>
+                <br />
+                {% if beauty.content2 %}<p>{{ beauty.content2|nl2br }}</p><br />{% endif %}
+                {% if beauty.content3 %}<p>{{ beauty.content3|nl2br }}</p><br />{% endif %}
+                <ul class="list">
+                    {% if beauty.listcontent1 %}<li class="list-item"><b>{{ beauty.listtitre1 }} :</b> {{ beauty.listcontent1 }} </li>{% endif %}
+                    {% if beauty.listcontent2 %}<li class="list-item"><b>{{ beauty.listtitre2 }} :</b> {{ beauty.listcontent2 }} </li>{% endif %}
+                    {% if beauty.listcontent3 %}<li class="list-item"><b>{{ beauty.listtitre3 }} :</b> {{ beauty.listcontent3 }} </li>{% endif %}
+                </ul>
+                <hr>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

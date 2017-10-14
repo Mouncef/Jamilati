@@ -1,0 +1,132 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}{{ parent() }} - أحدث الإصدارات{% endblock %}
+
+{% block body %}
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#general").removeClass("active");
+            $("#invention").addClass("active");
+        });
+    </script>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" >
+        <h1 class="page-header text-right">أحدث الإصدارات</h1>
+
+        {% for flashMessage in app.session.flashbag.get('success') %}
+            <div class="alert alert-success text-right">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+        {% for flashMessage in app.session.flashbag.get('warning') %}
+            <div class="alert alert-warning text-right">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+        {% for flashMessage in app.session.flashbag.get('danger') %}
+            <div class="alert alert-danger text-right">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+
+        <div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active pull-right"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Inventions</a></li>
+            </ul>
+            <br/>
+            <!-- Tab panes -->
+            <div class="tab-content">
+
+                <div role="tabpanel" class="tab-pane active" id="profile">
+                    <!-- Start Gestion Articles Inventions Partie  -->
+                    <div class="page-header row text-right">
+                        <div class="col-xs-12">
+                            <div class="col-md-2 col-xs-12 pull-right">
+                                <a href="{{ path('jamilati_admin_invention_addarticle')}}">
+                                    <button type="button" class="btn btn-primary">
+                                        idafa
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </a>
+                            </div>
+
+                            <div class="col-md-10 col-xs-12">
+                                {% block form2 %}
+                                {% endblock %}
+                            </div>
+
+                        </div>
+                    </div>
+                    {% if articleinv %}
+                        <div class="table-responsive" dir="rtl">
+                            <table class="table table-striped" >
+                                <thead>
+                                <tr>
+                                    <th class="text-right"> #</th>
+                                    <th class="text-right">Titre</th>
+                                    <th class="text-right">Date</th>
+                                    <th class="text-right">Publication</th>
+                                    <th class="text-right">Image</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for article in articleinv %}
+                                    <tr>
+                                        <td>{{ article.id }}</td>
+                                        <td>{{ article.titre }}</td>
+                                        <td>{{ article.date|date('d/m/Y') }}</td>
+                                        <td>
+                                            {% if article.isPublished == 0 %}
+                                                <span class="label label-warning">Non Publié</span></h3>
+                                            {% else %}
+                                                <span class="label label-success">Publié</span></h3>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <img src="{{ asset('uploads/Invention/Images/'~article.filename) }}"  width="75">
+                                        <td>
+                                            {% if article.isPublished == 0 %}
+                                                <a href="{{ path('jamilati_admin_invention_editarticle', {'id': article.id}) }}">
+                                                    <button type="button" title="Modifier" class="btn btn-info btn-sm">
+                                                        <span class="glyphicon glyphicon-edit"></span>
+                                                    </button>
+                                                </a>
+                                                <a href="{{ path('jamilati_admin_invention_removearticle', {'id': article.id}) }}">
+                                                    <button type="button" title="Supprimer" class="btn btn-danger btn-sm">
+                                                        <span class="glyphicon glyphicon-trash"></span>
+                                                    </button>
+                                                </a>
+                                                <a href="{{ path('jamilati_admin_invention_publish', {'id': article.id}) }}">
+                                                    <button type="button" title="Publier" class="btn btn-success btn-sm">
+                                                        <span class="glyphicon glyphicon-eye-open"></span>
+                                                    </button>
+                                                </a>
+                                            {% else %}
+                                                <a href="{{ path('jamilati_admin_invention_unpublish', {'id': article.id}) }}">
+                                                    <button type="button" title="Enlever Publication" class="btn btn-warning btn-sm">
+                                                        <span class="glyphicon glyphicon-eye-close"></span>
+                                                    </button>
+                                                </a>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-warning text-right">
+                            La youjade ay ma9al
+                        </div>
+                    {% endif %}
+                    <!-- End Gestion Articles Inventions Partie  -->
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+{% endblock %}

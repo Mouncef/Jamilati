@@ -1,0 +1,59 @@
+{% extends 'AppBundle:Frontoffice:Video/index.html.twig' %}
+
+
+{% block REF %}
+    <meta name="keywords" content="جميلتي, فيديوهات ">
+    <meta name="description" content="{{ video.content1[:150] }}" />
+{% endblock %}
+{% block title %}{{ video.titre }}{% endblock %}
+{% block view_article %}
+    <style>
+        .article {
+            font-family: 'Changa', sans-serif;
+            position: relative;
+            top: -40px;
+        }
+        .article-titre {
+            color: #010101;
+        }
+        .list .list-item {
+            list-style-type: disc;
+            color: #000000;
+        }
+        .list, .list-item{
+            direction: rtl;
+            border: none;
+            margin: 10px;
+        }
+
+    </style>
+    {% if video %}
+
+        <div class="row article">
+            <div class="col-md-12">
+                <h1 align="center" class="article-titre">{{ video.titre }}</h1>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="{{ video.url }}" style="padding: 0 35px;" ></iframe>
+                </div>
+                <br />
+                <div>
+                    <span class="label label-videos" dir="rtl">{{ video.date|date('d-m-Y') }}</span>
+                    <div class="pull-right">
+                        <span class="label label-videos" dir="rtl">حرر من طرف {{ video.user }}</span>
+                    </div>
+                </div>
+                <br />
+                <p>{{ video.content1|nl2br }}</p>
+                <br />
+                {% if video.content2 %}<p>{{ video.content2|nl2br }}</p><br />{% endif %}
+                {% if video.content3 %}<p>{{ video.content3|nl2br }}</p><br />{% endif %}
+                <ul class="list">
+                    {% if video.listcontent1 %}<li class="list-item"><b>{{ video.listtitre1 }} :</b> {{ video.listcontent1 }} </li>{% endif %}
+                    {% if video.listcontent2 %}<li class="list-item"><b>{{ video.listtitre2 }} :</b> {{ video.listcontent2 }} </li>{% endif %}
+                    {% if video.listcontent3 %}<li class="list-item"><b>{{ video.listtitre3 }} :</b> {{ video.listcontent3 }} </li>{% endif %}
+                </ul>
+                <hr>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

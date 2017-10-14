@@ -1,0 +1,144 @@
+{% extends 'AppBundle::Backoffice/Health/adminhealthpage.html.twig' %}
+
+{% block title %}{{ parent() }} - صحة{% endblock %}
+
+{% block form2 %}
+
+
+    <h2 class="text-center">modifier un article de Santé </h2>
+    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.titre, "Titre", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        <div class="col-sm-6">
+            {# Génération de l'input. #}
+            {{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.date, "Date", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        <div class="col-sm-6">
+            {# Génération de l'input. #}
+            {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.content1, "Paragraphe 1", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        <div class="col-sm-6">
+            {# Génération de l'input. #}
+            {{ form_widget(form.content1, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.content2, "Paragraphe 2", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        <div class="col-sm-6">
+            {# Génération de l'input. #}
+            {{ form_widget(form.content2, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.content3, "Paragraphe 3", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        <div class="col-sm-6">
+            {# Génération de l'input. #}
+            {{ form_widget(form.content3, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.cathealth, "Catégorie", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        <div class="col-sm-6">
+            {# Génération de l'input. #}
+            {{ form_widget(form.cathealth, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.cover, "Image de Cover", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        <div class="col-sm-6">
+            {# Génération de l'input. #}
+            {{ form_widget(form.cover, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.listtitre1, "Liste Titre 1", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        <div class="col-sm-6">
+            {# Génération de l'input. #}
+            {{ form_widget(form.listtitre1, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.listcontent1, "Contenu Liste 1", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        <div class="col-sm-6">
+            {# Génération de l'input. #}
+            {{ form_widget(form.listcontent1, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.listtitre2, "Liste Titre 2", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        <div class="col-sm-6">
+            {# Génération de l'input. #}
+            {{ form_widget(form.listtitre2, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.listcontent2, "Contenu Liste 2", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        <div class="col-sm-6">
+            {# Génération de l'input. #}
+            {{ form_widget(form.listcontent2, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.listtitre3, "Liste Titre 3", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        <div class="col-sm-6">
+            {# Génération de l'input. #}
+            {{ form_widget(form.listtitre3, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.listcontent3, "Contenu Liste 3", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        <div class="col-sm-6">
+            {# Génération de l'input. #}
+            {{ form_widget(form.listcontent3, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-4 col-sm-4">
+            <div style="text-align: center;">
+                <a href="{{ path('jamilati_admin_health')}}"> <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-chevron-left"></span>Retour</button></a>
+                &nbsp;
+                <button type="submit" class="btn btn-primary" ><span class="glyphicon glyphicon-ok"></span> Valider </button>
+            </div>
+        </div>
+    </div>
+
+
+    {# Fermeture de la balise <form> du formulaire HTML #}
+    {{ form_end(form) }}
+
+
+{% endblock %}

@@ -1,0 +1,194 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}{{ parent() }} - صحة{% endblock %}
+
+{% block body %}
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#general").removeClass("active");
+            $("#health").addClass("active");
+        });
+    </script>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" >
+        <h1 class="page-header text-right">ركن الصحة</h1>
+
+        {% for flashMessage in app.session.flashbag.get('success') %}
+            <div class="alert alert-success text-right">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+        {% for flashMessage in app.session.flashbag.get('warning') %}
+            <div class="alert alert-warning text-right">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+        {% for flashMessage in app.session.flashbag.get('danger') %}
+            <div class="alert alert-danger text-right">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+
+        <div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active pull-right"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Catégorie Health</a></li>
+                <li role="presentation" class="pull-right"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Articles</a></li>
+            </ul>
+            <br/>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home">
+                    <!-- Start Gestion Catégories Health Partie  -->
+                    <div class="page-header row text-right">
+                        <div class="col-xs-12">
+                            <div class="col-md-2 col-xs-12 pull-right">
+                                <a href="{{ path('jamilati_admin_health_addcat')}}">
+                                    <button type="button" class="btn btn-primary">
+                                        idafa
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </a>
+                            </div>
+
+                            <div class="col-md-10 col-xs-12">
+                                {% block form %}
+                                {% endblock %}
+                            </div>
+
+                        </div>
+                    </div>
+                    {% if catheal %}
+                        <div class="table-responsive" dir="rtl">
+                            <table class="table table-striped" >
+                                <thead>
+                                <tr>
+                                    <th class="text-right"> #</th>
+                                    <th class="text-right">Intitulé</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for cat in catheal|sort %}
+                                    <tr>
+                                        <td>{{ cat.id }}</td>
+                                        <td>{{ cat.lib }}</td>
+                                        <td>
+                                            <a href="{{ path('jamilati_admin_health_editcat', {'id': cat.id}) }}">
+                                                <button type="button" title="Modifier" class="btn btn-info btn-sm">
+                                                    <span class="glyphicon glyphicon-edit"></span>
+                                                </button>
+                                            </a>
+                                            <a href="{{ path('jamilati_admin_health_removecat', {'id': cat.id}) }}">
+                                                <button type="button" title="Supprimer" class="btn btn-danger btn-sm">
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-warning text-right">
+                            La youjade ay ma9al
+                        </div>
+                    {% endif %}
+                    <!-- End Gestion Catégories Health Partie  -->
+                </div>
+                <div role="tabpanel" class="tab-pane" id="profile">
+                    <!-- Start Gestion Articles Health Partie  -->
+                    <div class="page-header row text-right">
+                        <div class="col-xs-12">
+                            <div class="col-md-2 col-xs-12 pull-right">
+                                <a href="{{ path('jamilati_admin_health_addarticle')}}">
+                                    <button type="button" class="btn btn-primary">
+                                        idafa
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </a>
+                            </div>
+
+                            <div class="col-md-10 col-xs-12">
+                                {% block form2 %}
+                                {% endblock %}
+                            </div>
+
+                        </div>
+                    </div>
+                    {% if articleheal %}
+                        <div class="table-responsive" dir="rtl">
+                            <table class="table table-striped" >
+                                <thead>
+                                <tr>
+                                    <th class="text-right"> #</th>
+                                    <th class="text-right">Titre</th>
+                                    <th class="text-right">Auteur</th>
+                                    <th class="text-right">Date</th>
+                                    <th class="text-right">Publication</th>
+                                    <th class="text-right">Catégorie</th>
+                                    <th class="text-right">Cover</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for article in articleheal %}
+                                    <tr>
+                                        <td>{{ article.id }}</td>
+                                        <td>{{ article.titre }}</td>
+                                        <td>{{ article.user }}</td>
+                                        <td>{{ article.date|date("d/m/Y") }}</td>
+                                        <td>
+                                            {% if article.isPublished == 0 %}
+                                                <span class="label label-warning">Non Publié</span></h3>
+                                            {% else %}
+                                                <span class="label label-success">Publié</span></h3>
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ article.cathealth.lib }}</td>
+                                        <td><img src="{{ asset('uploads/Health/Cover/'~article.filename) }}"  width="75"></td>
+                                        <td>
+                                            {% if article.isPublished == 0 %}
+                                                <a href="{{ path('jamilati_admin_health_editarticle', {'id': article.id}) }}">
+                                                    <button type="button" title="Modifier" class="btn btn-info btn-sm">
+                                                        <span class="glyphicon glyphicon-edit"></span>
+                                                    </button>
+                                                </a>
+                                                <a href="{{ path('jamilati_admin_health_removearticle', {'id': article.id}) }}">
+                                                    <button type="button" title="Supprimer" class="btn btn-danger btn-sm">
+                                                        <span class="glyphicon glyphicon-trash"></span>
+                                                    </button>
+                                                </a>
+                                                <a href="{{ path('jamilati_admin_health_publish', {'id': article.id}) }}">
+                                                    <button type="button" title="Publier" class="btn btn-success btn-sm">
+                                                        <span class="glyphicon glyphicon-eye-open"></span>
+                                                    </button>
+                                                </a>
+                                            {% else %}
+                                                <a href="{{ path('jamilati_admin_health_unpublish', {'id': article.id}) }}">
+                                                    <button type="button" title="Enlever Publication" class="btn btn-warning btn-sm">
+                                                        <span class="glyphicon glyphicon-eye-close"></span>
+                                                    </button>
+                                                </a>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-warning text-right">
+                            La youjade ay ma9al
+                        </div>
+                    {% endif %}
+                    <!-- End Gestion Articles Health Partie  -->
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+{% endblock %}

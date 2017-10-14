@@ -1,0 +1,58 @@
+{% extends 'AppBundle:Frontoffice:Mode/index.html.twig' %}
+
+{% block REF %}
+    <meta name="keywords" content="جميلتي, موضة ">
+    <meta name="description" content="{{ mode.content1[:150] }}" />
+{% endblock %}
+
+{% block title %}{{ mode.titre }}{% endblock %}
+
+{% block view_article %}
+<style>
+    .article {
+        font-family: 'Changa', sans-serif;
+        position: relative;
+        top: -40px;
+    }
+    .article-titre {
+        color: #010101;
+    }
+    .list .list-item {
+        list-style-type: disc;
+        color: #000000;
+    }
+    .list, .list-item{
+        direction: rtl;
+        border: none;
+        margin: 10px;
+    }
+
+</style>
+{% if mode %}
+
+    <div class="row article">
+        <div class="col-md-12">
+            <h1 align="center" class="article-titre">{{ mode.titre }}</h1>
+            <img src="{{ asset('uploads/Mode/Cover/'~mode.filename) }}" alt="{{ mode.filename }}" class="img-responsive" style="padding: 0 35px;"/>
+            <br />
+            <div>
+                <span class="label label-mode" dir="rtl">{{ mode.date|date('d-m-Y') }}</span>
+                <div class="pull-right">
+                    <span class="label label-mode" dir="rtl">حرر من طرف {{ mode.user }}</span>
+                </div>
+            </div>
+            <br />
+            <p>{{ mode.content1|nl2br }}</p>
+            <br />
+            {% if mode.content2 %}<p>{{ mode.content2|nl2br }}</p><br />{% endif %}
+            {% if mode.content3 %}<p>{{ mode.content3|nl2br }}</p><br />{% endif %}
+            <ul class="list">
+                {% if mode.listcontent1 %}<li class="list-item"><b>{{ mode.listtitre1 }} :</b> {{ mode.listcontent1 }} </li>{% endif %}
+                {% if mode.listcontent2 %}<li class="list-item"><b>{{ mode.listtitre2 }} :</b> {{ mode.listcontent2 }} </li>{% endif %}
+                {% if mode.listcontent3 %}<li class="list-item"><b>{{ mode.listtitre3 }} :</b> {{ mode.listcontent3 }} </li>{% endif %}
+            </ul>
+            <hr>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

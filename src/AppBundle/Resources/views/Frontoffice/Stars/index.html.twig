@@ -1,0 +1,146 @@
+{% extends 'AppBundle:Frontoffice:index.html.twig' %}
+
+{% block REF %}
+    <meta name="keywords" content="جميلتي, مشاهير">
+    <meta name="description" content="المشاهير هي فقرة من فقرات مجلة جميلتي. تجدون بهذه الصفحة جميع المقلات المتخصصة بالمشاهير" />
+{% endblock %}
+
+{% block title %} - مشاهير {{ parent() }}{% endblock %}
+
+
+ {% block Articles %}
+     <style>
+         .filter-button
+         {
+             font-family: 'Changa', sans-serif;
+             font-weight: bold;
+             font-size: 18px;
+             border: 1px solid #FC7F02;
+             border-radius: 5px;
+             text-align: center;
+             color: #FC7F02;
+             margin-bottom: 30px;
+
+         }
+         .filter-button:hover
+         {
+             font-size: 18px;
+             border: 1px solid #FC7F02;
+             border-radius: 5px;
+             text-align: center;
+             color: #ffffff;
+             background-color: #FC7F02;
+
+         }
+         .btn-default:active .filter-button:active
+         {
+             background-color: #FC7F02;
+             color: white;
+         }
+
+
+         .gallery_product
+         {
+             padding: 2px;
+
+         }
+         .gallery_product img{
+             width: 98%;
+             border: 1px solid #FC7F02;
+             border-radius: 2px;
+         }
+
+         a .gallery_product:hover{
+             opacity: 0.8;
+             border: 1px solid #FC7F02;
+             border-radius: 5px;
+         }
+         .caption {
+             position:absolute;
+             top:0;
+             right:0;
+             background: #FC7F02;
+             width:100%;
+             height:100%;
+             padding:2%;
+             display: none;
+             text-align:center;
+             font-family: 'Changa', sans-serif;
+             color:#fff !important;
+             z-index:2;
+         }
+         .navigation{
+             font-family: 'Changa', sans-serif;
+         }
+
+         .pagination>.active>span, .pagination>.active>span:hover{
+             background-color: #FC7F02;
+             border-color: #FC7F02;
+         }
+
+         .pagination>.disabled>span{
+             color: #000;
+             border-color: #000;
+         }
+         .pagination>li>a{
+             color: #FC7F02;
+             border: 1px solid #000;
+         }
+         .pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover{
+             color: #FFFFFF;
+             background-color: #FC7F02;
+             border-color: #000;
+         }
+     </style>
+     <div class="row">
+         <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
+             <h2 class="titrestars"> مشاهير </h2>
+         </div>
+
+         {% block view_article %}{% endblock %}
+
+         <div align="center">
+             <button class="btn btn-default filter-button" data-filter="all">All</button>
+             {% if catstars %}
+                 {% for category in catstars %}
+                     <button class="btn btn-default filter-button" data-filter="{{ category.id }}">{{ category.lib }}</button>
+                 {% endfor %}
+             {% else %}
+                 <div class="alert alert-warning text-right">
+                     <p>لا يوجد أي محتوى</p>
+                 </div>
+             {% endif %}
+         </div>
+         <br/>
+
+         {% if pagination %}
+             {% for article in pagination %}
+                 <a href="{{ path('jamilati_starspage_view', {'id':article.id}) }}">
+                     <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-4 filter {{ article.catstars.id }}">
+                         <div class="caption">
+                             <h4>{{ article.titre }}</h4>
+                             <p>{{ article.content1[:25] }}</p>
+                         </div>
+                         <img src="{{ asset('uploads/Stars/Cover/'~article.filename) }}" alt="{{ article.filename }}">
+                     </div>
+                 </a>
+             {% endfor %}
+
+
+         {% else %}
+             <div class="alert alert-warning text-right">
+                 <p>لا يوجد أي محتوى</p>
+             </div>
+         {% endif %}
+         <br/>
+
+     </div>
+     {# display navigation #}
+     <div class="navigation" align="center">
+         {{ knp_pagination_render(pagination) }}
+     </div>
+     <hr class="endstars" />
+     <br />
+
+
+ {% endblock %}

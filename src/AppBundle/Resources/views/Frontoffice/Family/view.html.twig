@@ -1,0 +1,59 @@
+{% extends 'AppBundle:Frontoffice:Family/index.html.twig' %}
+
+{% block REF %}
+    <meta name="keywords" content="جميلتي, أسرة ">
+    <meta name="description" content="{{ family.content1[:150] }}" />
+{% endblock %}
+
+{% block title %}{{ family.titre }}{% endblock %}
+
+{% block view_article %}
+    <style>
+        .article {
+            font-family: 'Changa', sans-serif;
+            position: relative;
+            top: -40px;
+        }
+        .article-titre {
+            color: #010101;
+        }
+        .list .list-item {
+            list-style-type: disc;
+            color: #000000;
+        }
+        .list, .list-item{
+            direction: rtl;
+            border: none;
+            margin: 10px;
+        }
+
+    </style>
+    {% if family %}
+
+        <div class="row article">
+            <div class="col-md-12">
+                <h1 align="center" class="article-titre">{{ family.titre }}</h1>
+                <img src="{{ asset('uploads/Family/Cover/'~family.filename) }}" alt="{{ family.filename }}" class="img-responsive" style="padding: 0 35px;" />
+                <br />
+                <div>
+                    <span class="label label-family" dir="rtl">{{ family.date|date('d-m-Y') }}</span>
+
+                    <div class="pull-right">
+                        <span class="label label-family" dir="rtl">حرر من طرف {{ family.user }}</span>
+                    </div>
+                </div>
+                <br />
+                <p>{{ family.content1|nl2br }}</p>
+                <br />
+                {% if family.content2 %}<p>{{ family.content2|nl2br }}</p><br />{% endif %}
+                {% if family.content3 %}<p>{{ family.content3|nl2br }}</p><br />{% endif %}
+                <ul class="list">
+                    {% if family.listcontent1 %}<li class="list-item"><b>{{ family.listtitre1 }} :</b> {{ family.listcontent1 }} </li>{% endif %}
+                    {% if family.listcontent2 %}<li class="list-item"><b>{{ family.listtitre2 }} :</b> {{ family.listcontent2 }} </li>{% endif %}
+                    {% if family.listcontent3 %}<li class="list-item"><b>{{ family.listtitre3 }} :</b> {{ family.listcontent3 }} </li>{% endif %}
+                </ul>
+                <hr>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,225 @@
+
+@media screen and (min-width: 320px) {
+
+    .links {right: 0;}
+
+    #header a {
+        font-size: 0.93em;
+    }
+    
+    .weather-app {
+        width: 260px;
+    }
+    .left-app {
+        width: 130px;
+    }
+    .location {font-size: 1em;}
+    .right-app {
+        width: 128px;
+    }
+    
+    .titreweather:after {width: 40px;}
+    .titreweather:before {width: 40px;}
+    
+    .titrehoro:after {width: 80px;}
+    .titrehoro:before {width: 80px;}
+    
+    .horos li {width: 80px;}
+    
+    .titresubscribe:after {width: 65px;}
+    .titresubscribe:before {width: 65px;}
+    
+    .titreImgOfDay:after {width: 75px;}
+    .titreImgOfDay:before {width: 75px;}
+    
+    .titreconseil:after {width: 70px;}
+    .titreconseil:before {width: 70px;}
+    
+    .titrenewconcepts:after {width: 65px;}
+    .titrenewconcepts:before {width: 65px;}
+    
+    .titreTonAvis:after {width: 50px;}
+    .titreTonAvis:before {width: 50px;}
+    
+    #rightbar {height: 3700px;}
+    #leftbar {height: 3700px;}
+    #contentbar {height: 3700px;}
+
+    .listvideo li iframe {width: 290px;}
+
+}
+
+@media screen and (min-width: 1280px) and (min-height: 800px) {
+
+    .links {right: -25px;}
+    .menu ul {font-size: 2.05em;}
+
+    .titreactu:after {width: 100px;}
+    .titreactu:before {width: 100px;}
+
+    .titrevideos:after {width: 70px;}
+    .titrevideos:before {width: 70px;}
+
+    .titremode:after {width: 205px;}
+    .titremode:before {width: 205px;}
+
+    .titrebeauty:after {width: 210px;}
+    .titrebeauty:before {width: 210px;}
+
+    .titrekitchen:after {width: 210px;}
+    .titrekitchen:before {width: 210px;}
+
+    .titrehealth:after {width: 210px;}
+    .titrehealth:before {width: 210px;}
+
+    .titrefamily:after {width: 210px;}
+    .titrefamily:before {width: 210px;}
+
+    .titrenews:after {width: 210px;}
+    .titrenews:before {width: 210px;}
+
+    .titrestars:after {width: 190px;}
+    .titrestars:before {width: 190px;}
+
+    .titreinfo:after {width: 40px;}
+    .titreinfo:before {width: 40px;}
+
+    .titrenewconcepts:after {width: 60px;}
+    .titrenewconcepts:before {width: 60px;}
+
+    .titreTonAvis:after {width: 50px;}
+    .titreTonAvis:before {width: 50px;}
+
+    .titrehoro:after {width: 70px;}
+    .titrehoro:before {width: 70px;}
+
+    .titresubscribe:after {width: 60px;}
+    .titresubscribe:before {width: 60px;}
+}
+
+@media screen and (min-width: 1320px) {
+
+    .links {right: 35px;}
+
+    #header a {
+        font-size: 1em;
+    }
+    
+    .titreactu:after {width: 135px;}
+    .titreactu:before {width: 135px;}
+
+    .titrevideos:after {width: 80px;}
+    .titrevideos:before {width: 80px;}
+    
+    .titremode:after {width: 235px;}
+    .titremode:before {width: 235px;}
+    
+    .titrebeauty:after {width: 246px;}
+    .titrebeauty:before {width: 246px;}
+    
+    .titrekitchen:after {width: 238px;}
+    .titrekitchen:before {width: 238px;}
+    
+    .titrehealth:after {width: 250px;}
+    .titrehealth:before {width: 250px;}
+    
+    .titrefamily:after {width: 250px;}
+    .titrefamily:before {width: 250px;}
+    
+    .titrenews:after {width: 255px;}
+    .titrenews:before {width: 255px;}
+    
+    .titrestars:after {width: 215px;}
+    .titrestars:before {width: 215px;}
+    
+    .titreinfo:after {width: 50px;}
+    .titreinfo:before {width: 50px;}
+    
+    .weather-app {
+        width: 290px;
+    }
+    .left-app {
+        width: 142px;
+    }
+    .location {font-size: 1em;}
+    .right-app {
+        width: 146px;
+    }
+    
+    .titreweather:after {width: 52px;}
+    .titreweather:before {width: 52px;}
+    
+    .titrehoro:after {width: 89px;}
+    .titrehoro:before {width: 89px;}
+    
+    .horos li {width: 90px;}
+    
+    .titresubscribe:after {width: 74px;}
+    .titresubscribe:before {width: 74px;}
+    
+    .titreImgOfDay:after {width: 87px;}
+    .titreImgOfDay:before {width: 87px;}
+    
+    .titreconseil:after {width: 85px;}
+    .titreconseil:before {width: 85px;}
+    
+    .titrenewconcepts:after {width: 75px;}
+    .titrenewconcepts:before {width: 75px;}
+    
+    .titreTonAvis:after {width: 60px;}
+    .titreTonAvis:before {width: 60px;}
+    
+    #rightbar {height: 3750px;}
+    #leftbar {height: 3750px;}
+    #contentbar {height: 3750px;}
+
+    .listvideo li iframe {width: 310px;}
+    
+}
+
+@media screen and (min-width: 1440px) and (min-height: 900px){
+
+    .links {right: 80px;}
+
+    #header a {
+        font-size: 1.077em;
+    }
+    
+    .titreactu:after {width: 153px;}
+    .titreactu:before {width: 153px;}
+
+    .titrevideos:after {width: 100px;}
+    .titrevideos:before {width: 100px;}
+    
+    .titremode:after {width: 250px;}
+    .titremode:before {width: 250px;}
+    
+    .titrebeauty:after {width: 266px;}
+    .titrebeauty:before {width: 266px;}
+    
+    .titrekitchen:after {width: 260px;}
+    .titrekitchen:before {width: 260px;}
+    
+    .titrehealth:after {width: 270px;}
+    .titrehealth:before {width: 270px;}
+    
+    .titrefamily:after {width: 269px;}
+    .titrefamily:before {width: 269px;}
+    
+    .titrenews:after {width: 275px;}
+    .titrenews:before {width: 275px;}
+    
+    .titrestars:after {width: 236px;}
+    .titrestars:before {width: 236px;}
+    
+    .titreinfo:after {width: 60px;}
+    .titreinfo:before {width: 60px;}
+    
+    .titreTonAvis:after {width: 70px;}
+    .titreTonAvis:before {width: 70px;}
+    
+    #rightbar {height: 3770px;}
+    #leftbar {height: 3770px;}
+    #contentbar {height: 3770px;}
+    
+}

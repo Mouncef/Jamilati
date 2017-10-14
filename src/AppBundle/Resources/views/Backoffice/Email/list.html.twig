@@ -1,0 +1,59 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}{{ parent() }} - قاعدة البريد الإلكتروني{% endblock %}
+
+{% block body %}
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#general").removeClass("active");
+            $("#emails").addClass("active");
+        });
+    </script>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" >
+        <h1 class="page-header text-right">قاعدة البريد الإلكتروني</h1>
+
+        <div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active pull-right"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Emails</a></li>
+            </ul>
+            <br/>
+            <!-- Tab panes -->
+            <div class="tab-content">
+
+                <div role="tabpanel" class="tab-pane active" id="profile">
+                    <!-- Start Gestion Articles DM Partie  -->
+                    {% if emails %}
+                        <div class="table-responsive" dir="rtl">
+                            <table class="table table-striped" >
+                                <thead>
+                                <tr>
+                                    <th class="text-right"> #</th>
+                                    <th class="text-right">Email</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for email in emails|sort %}
+                                    <tr>
+                                        <td>{{ email.id }}</td>
+                                        <td>{{ email.email }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-warning text-right">
+                            La youjade ay @Mail
+                        </div>
+                    {% endif %}
+                    <!-- End Gestion Articles Horo Partie  -->
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+{% endblock %}

@@ -1,0 +1,643 @@
+jamilati_homepage:
+    path:     /
+    defaults: { _controller: AppBundle:Frontoffice:index }
+jamilati_homepage_vote:
+    path:     /votes/{id}
+    defaults: { _controller: AppBundle:Frontoffice:vote }
+    requirements:
+        id:  \d*
+jamilati_homepage_email:
+    path:    /email
+    defaults: { _controller: AppBundle:Frontoffice:email }
+
+jamilati_homepage_contact:
+    path:     /contact
+    defaults: { _controller: AppBundle:Frontoffice:contact }
+
+jamilati_modepage:
+    path:      /mode
+    defaults:  { _controller: AppBundle:ModePage:index }
+
+jamilati_modepage_view:
+    path:      /mode/{id}
+    defaults:  { _controller: AppBundle:ModePage:view }
+    requirements:
+        id:  \d*
+
+jamilati_beautypage:
+    path:      /beauty
+    defaults:  { _controller: AppBundle:BeautyPage:index }
+
+jamilati_beautypage_view:
+    path:      /beauty/{id}
+    defaults:  { _controller: AppBundle:BeautyPage:view }
+    requirements:
+        id:   \d*
+
+jamilati_kitchenpage:
+    path:      /kitchen
+    defaults:  { _controller: AppBundle:KitchenPage:index }
+
+jamilati_kitchenpage_view:
+    path:      /kitchen/{id}
+    defaults:  { _controller: AppBundle:KitchenPage:view }
+    requirements:
+        id:    \d*
+
+jamilati_healthpage:
+    path:      /health
+    defaults:  { _controller: AppBundle:HealthPage:index }
+
+jamilati_healthpage_view:
+    path:      /health/{id}
+    defaults:  { _controller: AppBundle:HealthPage:view }
+    requirements:
+        id:   \d*
+
+jamilati_familypage:
+    path:      /family
+    defaults:  { _controller: AppBundle:FamilyPage:index }
+
+jamilati_familypage_view:
+    path:      /family/{id}
+    defaults:  { _controller: AppBundle:FamilyPage:view }
+    requirements:
+        id:   \d*
+
+jamilati_newspage:
+    path:      /news
+    defaults:  { _controller: AppBundle:NewsPage:index }
+
+jamilati_newspage_view:
+    path:      /news/{id}
+    defaults:  { _controller: AppBundle:NewsPage:view }
+    requirements:
+        id:    \d*
+
+jamilati_starspage:
+    path:      /stars
+    defaults:  { _controller: AppBundle:StarsPage:index }
+
+jamilati_starspage_view:
+    path:      /stars/{id}
+    defaults:  { _controller: AppBundle:StarsPage:view }
+    requirements:
+        id:    \d*
+
+jamilati_viedopage:
+    path:      /video
+    defaults:  { _controller: AppBundle:VideoPage:index }
+
+jamilati_videopage_view:
+    path:      /video/{id}
+    defaults:  { _controller: AppBundle:VideoPage:view }
+    requirements:
+        id:    \d*
+#####################################Administration################################################################
+jamilati_admin:
+    path:     /admin
+    defaults: { _controller: AppBundle:Frontoffice:admin }
+jamilati_admin_emails:
+    path:     /admin/bdMails
+    defaults: { _controller: AppBundle:Email:index }
+#####################################Administration Mode################################################################
+jamilati_admin_mode:
+    path:     /admin/mode
+    defaults: { _controller: AppBundle:Mode:index }
+
+jamilati_admin_mode_addcat:
+    path:     /admin/mode/addCat
+    defaults: { _controller: AppBundle:Mode:addcat }
+
+jamilati_admin_mode_addarticle:
+    path:     /admin/mode/addArticle
+    defaults: { _controller: AppBundle:Mode:addarticle }
+
+jamilati_admin_mode_editcat:
+    path:     /admin/mode/editcat/{id}
+    defaults: { _controller: AppBundle:Mode:editcat }
+    requirements:
+        id:  \d*
+
+jamilati_admin_mode_editarticle:
+    path:     /admin/mode/editArticle/{id}
+    defaults: { _controller: AppBundle:Mode:editarticle }
+    requirements:
+        id:  \d*
+
+jamilati_admin_mode_removecat:
+    path:     /admin/mode/removecat/{id}
+    defaults: { _controller: AppBundle:Mode:removecat }
+    requirements:
+        id:  \d*
+
+jamilati_admin_mode_removearticle:
+    path:     /admin/mode/removeArticle/{id}
+    defaults: { _controller: AppBundle:Mode:removearticle }
+    requirements:
+        id:  \d*
+
+jamilati_admin_mode_publish:
+    path:     /admin/mode/publishArticle/{id}
+    defaults: { _controller: AppBundle:Mode:publish }
+    requirements:
+        id:   \d*
+
+jamilati_admin_mode_unpublish:
+    path:     /admin/mode/unpublishArticle/{id}
+    defaults: { _controller: AppBundle:Mode:unpublish }
+    requirements:
+        id:   \d*
+#####################################Fin Administration Mode################################################################
+#####################################Start Administration Beauty################################################################
+jamilati_admin_beauty:
+    path:     /admin/beauty
+    defaults: { _controller: AppBundle:Beauty:index }
+
+jamilati_admin_beauty_addcat:
+    path:     /admin/beauty/addCat
+    defaults: { _controller: AppBundle:Beauty:addcat }
+
+jamilati_admin_beauty_addarticle:
+    path:     /admin/beauty/addArticle
+    defaults: { _controller: AppBundle:Beauty:addarticle }
+
+jamilati_admin_beauty_editcat:
+    path:     /admin/beauty/editcat/{id}
+    defaults: { _controller: AppBundle:Beauty:editcat }
+    requirements:
+        id:  \d*
+
+jamilati_admin_beauty_editarticle:
+    path:     /admin/beauty/editArticle/{id}
+    defaults: { _controller: AppBundle:Beauty:editarticle }
+    requirements:
+        id:  \d*
+
+jamilati_admin_beauty_removecat:
+    path:     /admin/beauty/removecat/{id}
+    defaults: { _controller: AppBundle:Beauty:removecat }
+    requirements:
+        id:  \d*
+
+jamilati_admin_beauty_removearticle:
+    path:     /admin/beauty/removeArticle/{id}
+    defaults: { _controller: AppBundle:Beauty:removearticle }
+    requirements:
+        id:  \d*
+
+jamilati_admin_beauty_publish:
+    path:     /admin/beauty/publishArticle/{id}
+    defaults: { _controller: AppBundle:Beauty:publish }
+    requirements:
+        id:   \d*
+
+jamilati_admin_beauty_unpublish:
+    path:     /admin/beauty/unpublishArticle/{id}
+    defaults: { _controller: AppBundle:Beauty:unpublish }
+    requirements:
+        id:   \d*
+
+#####################################End Administration Beauty################################################################
+#####################################Start Administration Kitchen################################################################
+jamilati_admin_kitchen:
+    path:     /admin/kitchen
+    defaults: { _controller: AppBundle:Kitchen:index }
+
+jamilati_admin_kitchen_addcat:
+    path:     /admin/kitchen/addCat
+    defaults: { _controller: AppBundle:Kitchen:addcat }
+
+jamilati_admin_kitchen_addarticle:
+    path:     /admin/kitchen/addArticle
+    defaults: { _controller: AppBundle:Kitchen:addarticle }
+
+jamilati_admin_kitchen_editcat:
+    path:     /admin/kitchen/editcat/{id}
+    defaults: { _controller: AppBundle:Kitchen:editcat }
+    requirements:
+        id:  \d*
+
+jamilati_admin_kitchen_editarticle:
+    path:     /admin/kitchen/editArticle/{id}
+    defaults: { _controller: AppBundle:Kitchen:editarticle }
+    requirements:
+        id:  \d*
+
+jamilati_admin_kitchen_removecat:
+    path:     /admin/kitchen/removecat/{id}
+    defaults: { _controller: AppBundle:Kitchen:removecat }
+    requirements:
+        id:  \d*
+
+jamilati_admin_kitchen_removearticle:
+    path:     /admin/kitchen/removeArticle/{id}
+    defaults: { _controller: AppBundle:Kitchen:removearticle }
+    requirements:
+        id:  \d*
+
+jamilati_admin_kitchen_publish:
+    path:     /admin/kitchen/publishArticle/{id}
+    defaults: { _controller: AppBundle:Kitchen:publish }
+    requirements:
+        id:   \d*
+
+jamilati_admin_kitchen_unpublish:
+    path:     /admin/kitchen/unpublishArticle/{id}
+    defaults: { _controller: AppBundle:Kitchen:unpublish }
+    requirements:
+        id:   \d*
+#####################################End Administration Kitchen################################################################
+#####################################Start Administration Health################################################################
+jamilati_admin_health:
+    path:     /admin/health
+    defaults: { _controller: AppBundle:Health:index }
+
+jamilati_admin_health_addcat:
+    path:     /admin/health/addCat
+    defaults: { _controller: AppBundle:Health:addcat }
+
+jamilati_admin_health_addarticle:
+    path:     /admin/health/addArticle
+    defaults: { _controller: AppBundle:Health:addarticle }
+
+jamilati_admin_health_editcat:
+    path:     /admin/health/editcat/{id}
+    defaults: { _controller: AppBundle:Health:editcat }
+    requirements:
+        id:  \d*
+
+jamilati_admin_health_editarticle:
+    path:     /admin/health/editArticle/{id}
+    defaults: { _controller: AppBundle:Health:editarticle }
+    requirements:
+        id:  \d*
+
+jamilati_admin_health_removecat:
+    path:     /admin/health/removecat/{id}
+    defaults: { _controller: AppBundle:Health:removecat }
+    requirements:
+        id:  \d*
+
+jamilati_admin_health_removearticle:
+    path:     /admin/health/removeArticle/{id}
+    defaults: { _controller: AppBundle:Health:removearticle }
+    requirements:
+        id:  \d*
+
+jamilati_admin_health_publish:
+    path:     /admin/health/publishArticle/{id}
+    defaults: { _controller: AppBundle:Health:publish }
+    requirements:
+        id:   \d*
+
+jamilati_admin_health_unpublish:
+    path:     /admin/health/unpublishArticle/{id}
+    defaults: { _controller: AppBundle:Health:unpublish }
+    requirements:
+        id:   \d*
+#####################################End Administration Health################################################################
+#####################################Start Administration Family################################################################
+jamilati_admin_family:
+    path:     /admin/family
+    defaults: { _controller: AppBundle:Family:index }
+
+jamilati_admin_family_addcat:
+    path:     /admin/family/addCat
+    defaults: { _controller: AppBundle:Family:addcat }
+
+jamilati_admin_family_addarticle:
+    path:     /admin/family/addArticle
+    defaults: { _controller: AppBundle:Family:addarticle }
+
+jamilati_admin_family_editcat:
+    path:     /admin/family/editcat/{id}
+    defaults: { _controller: AppBundle:Family:editcat }
+    requirements:
+        id:  \d*
+
+jamilati_admin_family_editarticle:
+    path:     /admin/family/editArticle/{id}
+    defaults: { _controller: AppBundle:Family:editarticle }
+    requirements:
+        id:  \d*
+
+jamilati_admin_family_removecat:
+    path:     /admin/family/removecat/{id}
+    defaults: { _controller: AppBundle:Family:removecat }
+    requirements:
+        id:  \d*
+
+jamilati_admin_family_removearticle:
+    path:     /admin/family/removeArticle/{id}
+    defaults: { _controller: AppBundle:Family:removearticle }
+    requirements:
+        id:  \d*
+
+jamilati_admin_family_publish:
+    path:     /admin/family/publishArticle/{id}
+    defaults: { _controller: AppBundle:Family:publish }
+    requirements:
+        id:   \d*
+
+jamilati_admin_family_unpublish:
+    path:     /admin/family/unpublishArticle/{id}
+    defaults: { _controller: AppBundle:Family:unpublish }
+    requirements:
+        id:   \d*
+
+#####################################End Administration Family################################################################
+#####################################Start Administration NEWS################################################################
+jamilati_admin_news:
+    path:     /admin/news
+    defaults: { _controller: AppBundle:News:index }
+
+jamilati_admin_news_addcat:
+    path:     /admin/news/addCat
+    defaults: { _controller: AppBundle:News:addcat }
+
+jamilati_admin_news_addarticle:
+    path:     /admin/news/addArticle
+    defaults: { _controller: AppBundle:News:addarticle }
+
+jamilati_admin_news_editcat:
+    path:     /admin/news/editcat/{id}
+    defaults: { _controller: AppBundle:News:editcat }
+    requirements:
+        id:  \d*
+
+jamilati_admin_news_editarticle:
+    path:     /admin/news/editArticle/{id}
+    defaults: { _controller: AppBundle:News:editarticle }
+    requirements:
+        id:  \d*
+
+jamilati_admin_news_removecat:
+    path:     /admin/news/removecat/{id}
+    defaults: { _controller: AppBundle:News:removecat }
+    requirements:
+        id:  \d*
+
+jamilati_admin_news_removearticle:
+    path:     /admin/news/removeArticle/{id}
+    defaults: { _controller: AppBundle:News:removearticle }
+    requirements:
+        id:  \d*
+
+jamilati_admin_news_publish:
+    path:     /admin/news/publishArticle/{id}
+    defaults: { _controller: AppBundle:News:publish }
+    requirements:
+        id:   \d*
+
+jamilati_admin_news_unpublish:
+    path:     /admin/news/unpublishArticle/{id}
+    defaults: { _controller: AppBundle:News:unpublish }
+    requirements:
+        id:   \d*
+#####################################End Administration NEWS################################################################
+#####################################Start Administration Stars################################################################
+jamilati_admin_stars:
+    path:     /admin/stars
+    defaults: { _controller: AppBundle:Stars:index }
+
+jamilati_admin_stars_addcat:
+    path:     /admin/stars/addCat
+    defaults: { _controller: AppBundle:Stars:addcat }
+
+jamilati_admin_stars_addarticle:
+    path:     /admin/stars/addArticle
+    defaults: { _controller: AppBundle:Stars:addarticle }
+
+jamilati_admin_stars_editcat:
+    path:     /admin/stars/editcat/{id}
+    defaults: { _controller: AppBundle:Stars:editcat }
+    requirements:
+        id:  \d*
+
+jamilati_admin_stars_editarticle:
+    path:     /admin/stars/editArticle/{id}
+    defaults: { _controller: AppBundle:Stars:editarticle }
+    requirements:
+        id:  \d*
+
+jamilati_admin_stars_removecat:
+    path:     /admin/stars/removecat/{id}
+    defaults: { _controller: AppBundle:Stars:removecat }
+    requirements:
+        id:  \d*
+
+jamilati_admin_stars_removearticle:
+    path:     /admin/stars/removeArticle/{id}
+    defaults: { _controller: AppBundle:Stars:removearticle }
+    requirements:
+        id:  \d*
+
+jamilati_admin_stars_publish:
+    path:     /admin/stars/publishArticle/{id}
+    defaults: { _controller: AppBundle:Stars:publish }
+    requirements:
+        id:   \d*
+
+jamilati_admin_stars_unpublish:
+    path:     /admin/stars/unpublishArticle/{id}
+    defaults: { _controller: AppBundle:Stars:unpublish }
+    requirements:
+        id:   \d*
+
+#####################################End Administration StarS################################################################
+#####################################Start Administration Video################################################################
+jamilati_admin_video:
+    path:     /admin/video
+    defaults: { _controller: AppBundle:Video:index }
+
+jamilati_admin_video_addcat:
+    path:     /admin/video/addCat
+    defaults: { _controller: AppBundle:Video:addcat }
+
+jamilati_admin_video_addarticle:
+    path:     /admin/video/addArticle
+    defaults: { _controller: AppBundle:Video:addarticle }
+
+jamilati_admin_video_editcat:
+    path:     /admin/video/editcat/{id}
+    defaults: { _controller: AppBundle:Video:editcat }
+    requirements:
+        id:  \d*
+
+jamilati_admin_video_editarticle:
+    path:     /admin/video/editArticle/{id}
+    defaults: { _controller: AppBundle:Video:editarticle }
+    requirements:
+        id:  \d*
+
+jamilati_admin_video_removecat:
+    path:     /admin/video/removecat/{id}
+    defaults: { _controller: AppBundle:Video:removecat }
+    requirements:
+        id:  \d*
+
+jamilati_admin_video_removearticle:
+    path:     /admin/video/removeArticle/{id}
+    defaults: { _controller: AppBundle:Video:removearticle }
+    requirements:
+        id:  \d*
+
+jamilati_admin_video_publish:
+    path:     /admin/video/publishArticle/{id}
+    defaults: { _controller: AppBundle:Video:publish }
+    requirements:
+        id:   \d*
+
+jamilati_admin_video_unpublish:
+    path:     /admin/video/unpublishArticle/{id}
+    defaults: { _controller: AppBundle:Video:unpublish }
+    requirements:
+        id:   \d*
+#####################################End Administration Video################################################################
+#####################################Start Administration Horoscope################################################################
+jamilati_admin_horo:
+    path:     /admin/horoscope
+    defaults: { _controller: AppBundle:Horoscope:index }
+
+jamilati_admin_horo_addarticle:
+    path:     /admin/horoscope/addArticle
+    defaults: { _controller: AppBundle:Horoscope:addarticle }
+
+
+jamilati_admin_horo_editarticle:
+    path:     /admin/horoscope/editArticle/{id}
+    defaults: { _controller: AppBundle:Horoscope:editarticle }
+    requirements:
+        id:  \d*
+
+
+jamilati_admin_horo_removearticle:
+    path:     /admin/horoscope/removeArticle/{id}
+    defaults: { _controller: AppBundle:Horoscope:removearticle }
+    requirements:
+        id:  \d*
+
+#####################################End Administration Horoscope################################################################
+#####################################Start Administration DayImage################################################################
+jamilati_admin_dm:
+    path:     /admin/imageoftheday
+    defaults: { _controller: AppBundle:DayImage:index }
+
+jamilati_admin_dm_addarticle:
+    path:     /admin/imageoftheday/addArticle
+    defaults: { _controller: AppBundle:DayImage:addarticle }
+
+
+jamilati_admin_dm_editarticle:
+    path:     /admin/imageoftheday/editArticle/{id}
+    defaults: { _controller: AppBundle:DayImage:editarticle }
+    requirements:
+        id:  \d*
+
+
+jamilati_admin_dm_removearticle:
+    path:     /admin/imageoftheday/removeArticle/{id}
+    defaults: { _controller: AppBundle:DayImage:removearticle }
+    requirements:
+        id:  \d*
+
+#####################################End Administration DayImage################################################################
+#####################################Start Administration DayAdvice################################################################
+jamilati_admin_da:
+    path:     /admin/adviceoftheday
+    defaults: { _controller: AppBundle:DayAdvice:index }
+
+jamilati_admin_da_addarticle:
+    path:     /admin/adviceoftheday/addArticle
+    defaults: { _controller: AppBundle:DayAdvice:addarticle }
+
+
+jamilati_admin_da_editarticle:
+    path:     /admin/adviceoftheday/editArticle/{id}
+    defaults: { _controller: AppBundle:DayAdvice:editarticle }
+    requirements:
+        id:  \d*
+
+
+jamilati_admin_da_removearticle:
+    path:     /admin/adviceoftheday/removeArticle/{id}
+    defaults: { _controller: AppBundle:DayAdvice:removearticle }
+    requirements:
+        id:  \d*
+
+#####################################End Administration DayAdvice################################################################
+#####################################Start Administration Sondage################################################################
+jamilati_admin_sondage:
+    path:     /admin/sondage
+    defaults: { _controller: AppBundle:Sondage:index }
+
+jamilati_admin_sondage_addarticle:
+    path:     /admin/sondage/addArticle
+    defaults: { _controller: AppBundle:Sondage:addarticle }
+
+
+jamilati_admin_sondage_editarticle:
+    path:     /admin/sondage/editArticle/{id}
+    defaults: { _controller: AppBundle:Sondage:editarticle }
+    requirements:
+        id:  \d*
+
+
+jamilati_admin_sondage_removearticle:
+    path:     /admin/sondage/removeArticle/{id}
+    defaults: { _controller: AppBundle:Sondage:removearticle }
+    requirements:
+        id:  \d*
+
+jamilati_admin_sondage_publish:
+    path:     /admin/sondage/publishArticle/{id}
+    defaults: { _controller: AppBundle:Sondage:publish }
+    requirements:
+        id:   \d*
+
+jamilati_admin_sondage_unpublish:
+    path:     /admin/sondage/unpublishArticle/{id}
+    defaults: { _controller: AppBundle:Sondage:unpublish }
+    requirements:
+        id:   \d*
+
+#####################################End Administration Sondage################################################################
+#####################################Start Administration Invention################################################################
+jamilati_admin_invention:
+    path:     /admin/invention
+    defaults: { _controller: AppBundle:Invention:index }
+
+jamilati_admin_invention_addarticle:
+    path:     /admin/invention/addArticle
+    defaults: { _controller: AppBundle:Invention:addarticle }
+
+
+jamilati_admin_invention_editarticle:
+    path:     /admin/invention/editArticle/{id}
+    defaults: { _controller: AppBundle:Invention:editarticle }
+    requirements:
+        id:  \d*
+
+
+jamilati_admin_invention_removearticle:
+    path:     /admin/invention/removeArticle/{id}
+    defaults: { _controller: AppBundle:Invention:removearticle }
+    requirements:
+        id:  \d*
+
+jamilati_admin_invention_publish:
+    path:     /admin/invention/publishArticle/{id}
+    defaults: { _controller: AppBundle:Invention:publish }
+    requirements:
+        id:   \d*
+
+jamilati_admin_invention_unpublish:
+    path:     /admin/invention/unpublishArticle/{id}
+    defaults: { _controller: AppBundle:Invention:unpublish }
+    requirements:
+        id:   \d*
+#####################################End Administration Invention################################################################
+login:
+    path:     /login
+    defaults: { _controller: AppBundle:Security:login }

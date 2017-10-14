@@ -1,0 +1,140 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}{{ parent() }} - ما رأيك في هذا ؟{% endblock %}
+
+{% block body %}
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#general").removeClass("active");
+            $("#sondage").addClass("active");
+        });
+    </script>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" >
+        <h1 class="page-header text-right">ما رأيك في هذا ؟</h1>
+
+        {% for flashMessage in app.session.flashbag.get('success') %}
+            <div class="alert alert-success text-right">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+        {% for flashMessage in app.session.flashbag.get('warning') %}
+            <div class="alert alert-warning text-right">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+        {% for flashMessage in app.session.flashbag.get('danger') %}
+            <div class="alert alert-danger text-right">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+
+        <div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active pull-right"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Sondage</a></li>
+            </ul>
+            <br/>
+            <!-- Tab panes -->
+            <div class="tab-content">
+
+                <div role="tabpanel" class="tab-pane active" id="profile">
+                    <!-- Start Gestion Articles Sondage Partie  -->
+                    <div class="page-header row text-right">
+                        <div class="col-xs-12">
+                            <div class="col-md-2 col-xs-12 pull-right">
+                                <a href="{{ path('jamilati_admin_sondage_addarticle')}}">
+                                    <button type="button" class="btn btn-primary">
+                                        idafa
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </a>
+                            </div>
+
+                            <div class="col-md-10 col-xs-12">
+                                {% block form2 %}
+                                {% endblock %}
+                            </div>
+
+                        </div>
+                    </div>
+                    {% if articleson %}
+                        <div class="table-responsive" dir="rtl">
+                            <table class="table table-striped" >
+                                <thead>
+                                <tr>
+                                    <th class="text-right"> #</th>
+                                    <th class="text-right">Libellé</th>
+                                    <th class="text-right">Date</th>
+                                    <th class="text-right">Image 1</th>
+                                    <th class="text-right">Image 2</th>
+                                    <th class="text-right">Nb votes Image1</th>
+                                    <th class="text-right">Nb votes Image2</th>
+                                    <th class="text-right">Publication</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for article in articleson %}
+                                    <tr>
+                                        <td>{{ article.id }}</td>
+                                        <td>{{ article.lib }}</td>
+                                        <td>{{ article.date|date('d/m/Y') }}</td>
+                                        <td>
+                                            <img src="{{ asset('uploads/Sondage/Images/Image1/'~article.filename1) }}"  width="75">
+                                        </td><td>
+                                            <img src="{{ asset('uploads/Sondage/Images/Image2/'~article.filename2) }}"  width="75">
+                                        </td>
+                                        <td>{{ article.nbvotes1 }}</td>
+                                        <td>{{ article.nbvotes2 }}</td>
+                                        <td>
+                                            {% if article.isPublished == 0 %}
+                                                <span class="label label-warning">Non Publié</span></h3>
+                                            {% else %}
+                                                <span class="label label-success">Publié</span></h3>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if article.isPublished == 0 %}
+                                                <a href="{{ path('jamilati_admin_sondage_editarticle', {'id': article.id}) }}">
+                                                    <button type="button" title="Modifier" class="btn btn-info btn-sm">
+                                                        <span class="glyphicon glyphicon-edit"></span>
+                                                    </button>
+                                                </a>
+                                                <a href="{{ path('jamilati_admin_sondage_removearticle', {'id': article.id}) }}">
+                                                    <button type="button" title="Supprimer" class="btn btn-danger btn-sm">
+                                                        <span class="glyphicon glyphicon-trash"></span>
+                                                    </button>
+                                                </a>
+                                                <a href="{{ path('jamilati_admin_sondage_publish', {'id': article.id}) }}">
+                                                    <button type="button" title="Publier" class="btn btn-success btn-sm">
+                                                        <span class="glyphicon glyphicon-eye-open"></span>
+                                                    </button>
+                                                </a>
+                                            {% else %}
+                                                <a href="{{ path('jamilati_admin_sondage_unpublish', {'id': article.id}) }}">
+                                                    <button type="button" title="Enlever Publication" class="btn btn-warning btn-sm">
+                                                        <span class="glyphicon glyphicon-eye-close"></span>
+                                                    </button>
+                                                </a>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-warning text-right">
+                            La youjade ay ma9al
+                        </div>
+                    {% endif %}
+                    <!-- End Gestion Articles Horo Partie  -->
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+{% endblock %}

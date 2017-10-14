@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="40x23" href="{{ asset('assets/img/favicon2x16.png') }}" />
+
+    <title>{% block title %}لوحة التحكم{% endblock %}</title>
+    {% block stylesheets %}
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <link href="{{ asset('assets/css/ie10-viewport-bug-workaround.css') }}" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="{{ asset('assets/css/admin.css') }}" rel="stylesheet" />
+        <link href="{{ asset('assets/css/font_awesome/css/font-awesome.min.css') }}" rel="stylesheet" />
+        <link href="{{ asset('assets/bower_components/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet" />
+        <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+        <!--[if lt IE 9]>
+            <script src="{{ asset('assets/js/ie8-responsive-file-warning.js') }}"></script>
+        <![endif]-->
+        <script src="{{ asset('assets/js/ie-emulation-modes-warning.js') }}"></script>
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    {% endblock %}
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header navbar-right">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{ path('jamilati_admin') }}">BackOffice جميلتي</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-left">
+            <li><a href="{{ path('jamilati_homepage') }}" target="_blank">FrontOffice جميلتي</a></li>
+            <li id="video"><a href="{{ path('jamilati_admin_video') }}">قناة جميلتي</a></li>
+            <li class="dropdown">
+              <a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">مزيد<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li id="horo"><a href="{{ path('jamilati_admin_horo') }}">ركن الأبراج</a></li>
+                <li id="dm"><a href="{{ path('jamilati_admin_dm') }}">صورة اليوم</a></li>
+                <li id="da"><a href="{{ path('jamilati_admin_da') }}">نصيحة اليوم</a></li>
+                <li id="sondage"><a href="{{ path('jamilati_admin_sondage') }}">ما رأيك في هذا ؟</a></li>
+                <li id="invention"><a href="{{ path('jamilati_admin_invention') }}">أحدث الإصدارات</a></li>
+                <li id="emails"><a href="{{ path('jamilati_admin_emails') }}">قاعدة البريد الإلكتروني</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ app.user.username }} مرحبا<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="{{ path('logout') }}">Se Déconnecter</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar text-center">
+            <li class="active" id="general"><a href="{{ path('jamilati_admin') }}">نظرة إجمالية</a></li>
+            <li id="mode"><a href="{{ path('jamilati_admin_mode') }}">موضة</a></li>
+            <li id="beauty"><a href="{{ path('jamilati_admin_beauty') }}">جمال</a></li>
+            <li id="kitchen"><a href="{{ path('jamilati_admin_kitchen') }}">مطبخ</a></li>
+          </ul>
+          <ul class="nav nav-sidebar text-center">
+            <li id="health"><a href="{{ path('jamilati_admin_health') }}">صحة</a></li>
+            <li id="family"><a href="{{ path('jamilati_admin_family') }}">أسرة</a></li>
+            <li id="news"><a href="{{ path('jamilati_admin_news') }}">أخبار</a></li>
+            <li id="stars"><a href="{{ path('jamilati_admin_stars') }}">مشاهير</a></li>
+          </ul>
+          
+        </div>
+        
+          {% block body %}{% endblock %}
+        
+      </div>
+    </div>
+    
+    
+    
+    {% block javascripts %}
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="{{ asset('assets/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+        <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+        <script src="{{ asset('assets/js/holder.min.js') }}"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="{{ asset('assets/js/ie10-viewport-bug-workaround.js') }}"></script>
+    {% endblock %}
+    
+  </body>
+</html>

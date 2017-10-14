@@ -1,0 +1,53 @@
+{% extends 'AppBundle:Backoffice/DayImage:admindmpage.html.twig' %}
+
+{% block title %}{{ parent() }} - صورة اليوم{% endblock %}
+
+{% block form2 %}
+
+
+    <h2 class="text-center">ajouter un article Image du Jour </h2>
+    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.titre, "Titre", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        <div class="col-sm-6">
+            {# Génération de l'input. #}
+            {{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.image, "Image", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        <div class="col-sm-6">
+            {# Génération de l'input. #}
+            {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.comment, "Commentaire", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        <div class="col-sm-6">
+            {# Génération de l'input. #}
+            {{ form_widget(form.comment, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-4 col-sm-4">
+            <div style="text-align: center;">
+                <a href="{{ path('jamilati_admin_dm')}}"> <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-chevron-left"></span>Retour</button></a>
+                &nbsp;
+                <button type="submit" class="btn btn-primary" ><span class="glyphicon glyphicon-ok"></span> Ajouter </button>
+            </div>
+        </div>
+    </div>
+
+
+    {# Fermeture de la balise <form> du formulaire HTML #}
+    {{ form_end(form) }}
+
+
+{% endblock %}

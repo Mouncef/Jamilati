@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ar">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+		{% block REF %}
+            <meta name="keywords" content="جميلتي, موضة,  جمال, مطبخ, صحة, أسرة, أخبار, مشاهير">
+            <meta name="description" content="جميلتي هي مجلة عربية لنساء العربيات. تجدون على هذا الموقع جميع المواظيع المتعلقة بالمرأة العربية" />
+        {% endblock %}
+		<meta name="viewport" content="width=1280, user-scalable=no">
+		<link rel="icon" type="image/png" sizes="40x23" href="{{ asset('assets/img/favicon2x16.png') }}" />
+        <title>{% block title %}جميلتي{% endblock %}</title>
+        {% block stylesheets %}
+			<link href="{{ asset('assets/css/loader.css') }}" rel="stylesheet" />
+            <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet" />
+            <link id="csslink" rel="stylesheet" />
+            <link id="responsivelink" rel="stylesheet" />
+            <link href="{{ asset('assets/css/font_awesome/css/font-awesome.min.css') }}" rel="stylesheet" />
+            <link href="{{ asset('assets/bower_components/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet" />
+            <script src="{{ asset('assets/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+        {% endblock %}
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<script>
+		  (adsbygoogle = window.adsbygoogle || []).push({
+		    google_ad_client: "ca-pub-8994359266741899",
+		    enable_page_level_ads: true
+		  });
+		</script>
+    </head>
+    <body>
+		<div class="loadersection">
+            
+			<span id="message">جميلتي ترحب بكم ٠٠٠</span>
+            <span class="loader loader-quart"></span> 
+        </div>
+		
+            
+        
+        <div id="contentprincipal">
+		
+			<!-- Navigation bar -->
+			<nav class="navbar navbar-default" id="mybar">
+				<div class="container-fluid">
+					<div class="row toplane">
+						<div class="col-md-4 media">
+							<ul class="nav navbar-nav" id="socialmedia">
+								<li><a href="https://www.facebook.com/jamilatiofficiel" target="_blank"><i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i></a></li>
+								<li><a href="https://plus.google.com/109024635998904307725?hl=ar" target="_blank"><i class="fa fa-google-plus-square fa-3x" aria-hidden="true"></i></a></li>
+								<li><a href="https://twitter.com/jamilatiofficil" target="_blank"><i class="fa fa-twitter-square fa-3x" aria-hidden="true"></i></a></li>
+								<li><a href="https://www.instagram.com/jamilatiofficiel/" target="_blank"><i class="fa fa-instagram fa-3x" aria-hidden="true"></i></a></li>
+							</ul>
+						</div>
+						
+						<div class="col-md-4 links">
+							<ul class="nav navbar-nav" id="linklist">
+								<li><a href="#Team" data-toggle="modal" data-target="#myTeam">فريق العمل </a></li>
+								<li><a href="#contact" data-toggle="modal" data-target="#Contact">اتصل بنا </a></li>
+								<li><a href="#" data-toggle="modal" data-target="#About">من نحن</a></li>
+							</ul>
+						</div>
+						
+						<div class="col-md-4 logo">
+							<a href="{{ path('jamilati_homepage') }}">
+								<img class="img-responsive" src="{{ asset('assets/img/logo.png') }}" />
+							</a>
+						</div>
+						
+					</div>
+					<div class="modal fade" id="myTeam" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<a href="#" class="btn btn-xs btn-danger close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>
+									<h4 class="modal-title" id="myModalLabel">فريق العمل </h4>
+								</div>
+								<div class="modal-body">
+									<div class="row">
+										<div class="col-sm-12">
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="modal fade" id="Contact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						<div class="modal-dialog-lg" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<a href="#" class="btn btn-xs btn-danger close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>
+									<h4 class="modal-title" id="myModalLabel">اتصل بنا</h4>
+								</div>
+								<div class="modal-body">
+									<div class="row">
+										<div class="col-sm-6">
+											<p><b>البريد الإلكتروني:</b> <a href="#">contact@jamilati.ma</a></p>
+										</div>
+										<div class="col-sm-6">
+											<p><b> رقم الهاتف:</b>  088 133 699 212+</p>
+										</div>
+									</div>
+									<hr>
+									<form action="{{ path('jamilati_homepage_contact') }}" method="get">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label for="name">
+														الرسالة</label>
+													<textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required"
+															  placeholder="الرسالة"></textarea>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label for="name">
+														الإسم الكامل</label>
+													<input type="text" name="name" class="form-control" id="name" placeholder="أدخل إسمك الكامل" required="required" />
+												</div>
+												<div class="form-group">
+													<label for="email">
+														البريد الإلكتروني</label>
+													<div class="input-group">
+                                						<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
+                                						</span>
+														<input type="email" name="email" class="form-control" id="email" placeholder="أدخل بريدك الإلكتروني" required="required" />
+													</div>
+												</div>
+												<div class="form-group">
+													<label for="subject">
+														الموضوع</label>
+													<select id="subject" name="subject" class="form-control" required="required">
+														<option value="na" selected="">إختر موضوعا :</option>
+														<option value="Lettre">رسالة</option>
+														<option value="Suggestion d'article">طلب كتابة مقال</option>
+														<option value="Message">اتصال</option>
+													</select>
+												</div>
+											</div>
+
+											<div class="col-md-12">
+												<button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
+													أرسل</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="modal fade" id="About" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<a href="#" class="btn btn-xs btn-danger close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>
+									<h4 class="modal-title" id="myModalLabel">من نحن</h4>
+								</div>
+								<div class="modal-body">
+									<div class="row">
+										<div class="col-sm-12">
+											<p>
+												إن موقع Jamilati.ma موقع فريد من نوعه غنيّ بالأخبار والصور والخدمات  يتوجّه إلى النساء العربيّات من مختلف الأعمار والخلفيّات الإجتماعيّة في كل أنحاء العالم  رغم اختلافهنّ من خلال تقديم معلومات وخدمات غنيّة يمكن الاطلاع عليها بسهولة. كما يسمح لهن بتبادل خبراتهنّ وقيمهن وأفكارهنّ حول مواضيع ومسائل تتعلّق بواقع الحياة اليومية، من خلال تحقيقات ومقابلات حصريّة مع شخصيّات استثنائيّة وينقل تجارب معيشة مؤثّرة
+											</p>
+										</div>
+									</div>
+									<br>
+									<div class="row">
+										<div class="col-sm-12">
+											<p>
+												تجدون بموقعنا Jamilati.ma  اخبار ,صور وفيديوهات روائع الموضة وأحدث عروض الأزياء وأسابيع الموضة من مختلف أنحاء العالم، ويقدّم نصائح للمحافظة على الجمال ويبرز جوانب من الحياة المرفّهة فيدخل أجمل المنازل ويصوّرها. كما يعالج شؤون الصحّة والتغذية والرشاقة ولا يغفل أخبار المشاهير والنجوم والثقافة والفلك والتسلية. والشؤون الاجتماعيّة.
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12 menu">
+							<ul class="nav navbar-nav" id="header" data-spy="affix" data-offset-top="130">
+								<li  class="videos"><a href="{{ path('jamilati_viedopage') }}"><i class="entete">TV</i>جميلتي <span class="glyphicon glyphicon-facetime-video icon" ></span></a></li>
+								<li class="stars"><a href="{{ path('jamilati_starspage') }}" >مشاهير <span class="glyphicon glyphicon-star icon"></span></a></li>
+								<li class="news"><a href="{{ path('jamilati_newspage') }}" >أخبار <span class="glyphicon glyphicon-pushpin icon"></span></a></li>
+								<li class="family"><a href="{{ path('jamilati_familypage') }}" >أسرة <span class="glyphicon glyphicon-user icon"></span></a></li>
+								<li class="health"><a href="{{ path('jamilati_healthpage') }}" >صحة <span class="glyphicon glyphicon-heart icon"></span></a></li>
+								<li class="kitchen"><a href="{{ path('jamilati_kitchenpage') }}" >مطبخ <span class="glyphicon glyphicon-cutlery icon"></span></a></li>
+								<li class="beauty"><a href="{{ path('jamilati_beautypage') }}">جمال <span class="glyphicon glyphicon-eye-open icon"></span></a></li>
+								<li class="mode"><a href="{{ path('jamilati_modepage') }}" >موضة <span class="glyphicon glyphicon-shopping-cart icon"></span></a></li>
+								<li  class="home active"><a href="{{ path('jamilati_homepage') }}">الرئيسية <span class="glyphicon glyphicon-home icon"></span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div><!-- /.container-fluid -->
+			</nav>
+	
+			<!-- Navigation bar -->
+			
+			{% block body %}{% endblock %}
+			
+			
+			<!--Section Footer -->
+			<footer class="footer1">
+				<div class="container">
+					<div class="row"><!-- row -->
+						<div class="col-lg-3 col-md-3"><!-- widgets column left -->
+							<ul class="list-unstyled clear-margins" dir="rtl"><!-- widgets -->
+								<li class="widget-container widget_nav_menu"><!-- widgets list -->
+									<ul>
+										<li>
+											<a  href="#" data-toggle="modal" data-target="#About">
+												<i class="fa fa-chevron-left"></i>
+												من نحن
+											</a>
+										</li>
+										<li>
+											<a  href="#" data-toggle="modal" data-target="#Contact">
+												<i class="fa fa-chevron-left"></i>
+												اتصل بنا
+											</a>
+										</li>
+										<li><a  href="#" data-toggle="modal" data-target="#myTeam">
+												<i class="fa fa-chevron-left"></i>
+												فريق العمل
+											</a>
+										</li>
+									</ul>
+								</li>
+							</ul>    
+						</div><!-- widgets column left end -->
+						<div class="col-lg-3 col-md-3"><!-- widgets column left -->
+							<ul class="list-unstyled clear-margins" dir="rtl"><!-- widgets -->    
+								<li class="widget-container widget_nav_menu"><!-- widgets list -->    
+									<ul>
+										<li><a  href="{{ path('jamilati_kitchenpage') }}"><i class="fa fa-chevron-left"></i>    مطبخ جميلتي</a></li>
+										<li><a  href="{{ path('jamilati_newspage') }}"><i class="fa fa-chevron-left"></i>    أخبار الساعة</a></li>
+										<li><a  href="{{ path('jamilati_familypage') }}"><i class="fa fa-chevron-left"></i>    حياة و أسرة</a></li>
+										<li><a  href="{{ path('jamilati_healthpage') }}"><i class="fa fa-chevron-left"></i>    صحة و وقاية</a></li>
+									</ul>
+								</li>
+							</ul>    
+						</div><!-- widgets column left end -->    
+						<div class="col-lg-3 col-md-3"><!-- widgets column left -->
+							<ul class="list-unstyled clear-margins" dir="rtl"><!-- widgets -->    
+								<li class="widget-container widget_nav_menu"><!-- widgets list -->
+									<ul>
+										<li><a  href="#"><i class="fa fa-chevron-left"></i>     نصائح الجمال</a></li>
+										<li><a  href="{{ path('jamilati_homepage') }}"><i class="fa fa-chevron-left"></i>     الصفحة الرئيسية</a></li>
+										<li><a  href="{{ path('jamilati_starspage') }}"><i class="fa fa-chevron-left"></i>     نجوم ومشاهير الفن</a></li>
+										<li><a  href="{{ path('jamilati_modepage') }}"><i class="fa fa-chevron-left"></i>     أزياء وصيحات الموضة</a></li>
+									</ul>
+								</li>
+							</ul>
+						</div><!-- widgets column left end -->
+						<div class="col-lg-3 col-md-3"><!-- widgets column center -->
+							<ul class="list-unstyled clear-margins" dir="rtl"><!-- widgets -->
+								<li class="widget-container widget_recent_news"><!-- widgets list -->
+									<div class="footerp"> 
+										<h2 class="title-median">
+											<a href="{{ path('jamilati_homepage') }}">
+												<img src="{{ asset('assets/img/logo2.jpg') }}" width=220 height=110 align="right" class="logofooter"/>
+											</a>
+										</h2>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<p><b>البريد الإلكتروني</b> <a href="#">contact@jamilati.ma</a></p>
+										<p><b> رقم الهاتف</b>  088 133 699 212+</p>
+									</div>
+									<div class="social-icons">
+										<ul class="nomargin">
+											<a href="https://www.facebook.com/jamilatiofficiel" target="_blank"><i class="fa fa-facebook-square fa-3x social-fb" id="social"></i></a>
+											<a href="https://twitter.com/jamilatiofficil" target="_blank"><i class="fa fa-twitter-square fa-3x social-tw" id="social"></i></a>
+											<a href="https://plus.google.com/109024635998904307725?hl=ar" target="_blank"><i class="fa fa-google-plus-square fa-3x social-gp" id="social"></i></a>
+											<a href="https://www.instagram.com/jamilatiofficiel/" target="_blank"><i class="fa fa-instagram fa-3x social-in" id="social"></i></a>
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!--header-->
+			<div class="footer-bottom">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+							<div class="design">
+								<p> تصميم و تطوير <a href="mailto:zaghratmoncef@gmail.com" target="_top">زغرات منصف</a> </p>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+							<div class="copyright">
+								<p>  جميع الحقوق محفوظة جميلتي 2017 ©</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Fin Section Footer -->
+		</div>	
+        {% block javascripts %}
+            <script>
+				window.jQuery || document.write('<script src="{{ asset('assets/js/vendor/jquery-1.12.0.min.js') }}"><\/script>')
+			</script>
+			<script>
+				$(window).load(function(){
+					$('.loadersection').fadeOut(5000, function(){
+						if((navigator.userAgent.indexOf("Chrome") >= 0) || (navigator.userAgent.indexOf("OS") >= 0)){
+							var assetstyle = "{{ asset('assets/css/style.css') }}";
+							var assetresponsive = "{{ asset('assets/css/responsive.css') }}";
+							$("#csslink").attr("href", assetstyle);
+							$("#responsivelink").attr("href", assetresponsive);
+							$('#contentprincipal').fadeIn(1000);
+						} else if(navigator.userAgent.indexOf("Firefox") >= 0){
+							var assetstyle = "{{ asset('assets/css/style.css') }}";
+							var assetresponsive = "{{ asset('assets/css/responsive.css') }}";
+							$("#csslink").attr("href", assetstyle);
+							$("#responsivelink").attr("href", assetresponsive);
+							$('#contentprincipal').fadeIn(1000);
+						} else {
+						   alert("Votre navigateur est inadéquat veuillez accéder à notre site via l'un de ces navigateurs (Google Chrome, Mozilla Firefox ou Opera) !");
+						   $(".loadersection #message").text("جميلتي تشكركم على زيارتكم ٠٠٠");
+						   $('.loadersection').fadeIn(1000);
+						}
+					});
+				});
+            </script>
+            <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+            <script src="{{ asset('assets/js/plugins.js') }}"></script>
+            <script src="{{ asset('assets/js/main.js') }}"></script>
+            <script src="{{ asset('assets/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+            <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+            <script>
+			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+			  ga('create', 'UA-102675080-1', 'auto');
+			  ga('send', 'pageview');
+			</script>
+
+            
+        {% endblock %}
+    </body>
+</html>

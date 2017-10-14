@@ -1,0 +1,14 @@
+{# app/Resources/TwigBundle/views/Exception/error404.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>404 Page not found</h1>
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {# ... #}
+    {% endif %}
+
+    <p>
+        La page demandée n'existe pas. <a href="{{ path('jamilati_homepage') }}" class="btn btn-warning">revenir à la page d'accueil</a>.
+    </p>
+{% endblock %}

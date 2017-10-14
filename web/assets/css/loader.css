@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Changa');
+
+#contentprincipal {display: none;}
+
+
+.loadersection {
+    height: 4000px;
+    line-height: 660px;
+    background-color: #aa52a9;
+    font-family: 'Changa', sans-serif;
+    font-size: 40px;
+    text-align: center;
+    color: #fff;    
+}
+
+#exit {
+    display: none !important;
+    height: 100%;
+    line-height: 660px;
+    background-color: #aa52a9;
+    font-family: 'Changa', sans-serif;
+    font-size: 40px;
+    text-align: center;
+    color: #fff;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+.loader-quart {
+    border-radius: 50px;
+    border: 6px solid rgba(255,255,255,0.4);
+}
+
+.loader-quart:after{
+    content: '';
+    position: absolute;
+    top: -6px; left: -6px;bottom: -6px; right: -6px;
+    border: 6px solid transparent;
+    border-top-color: #fff;
+    border-radius: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg);  }
+    100% { transform: rotate(360deg);  }
+}

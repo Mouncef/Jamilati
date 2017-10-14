@@ -1,0 +1,1185 @@
+{% extends 'base.html.twig' %}
+
+
+{% block REF %}
+    <meta name="keywords" content="جميلتي, موضة, جمال, مطبخ, صحة, أسرة, أخبار, مشاهير">
+    <meta name="description" content="جميلتي هي مجلة عربية لنساء العربيات. تجدون على هذا الموقع جميع المواظيع المتعلقة بالمرأة العربية" />
+{% endblock %}
+
+{% block title %} - الرئيسية{{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="well weel" id="leftbar">
+                        <h2 class="titrevideo"> جميلتي <i class="entete2">TV</i>{#<span class="tv"><img src="{{ asset('assets/img/tv.png') }}" /></span>#}</h2>
+                        
+                        <ul class="nav nav-pills nav-stacked listvideo">
+                            {#################--------------------Latests Videos-----------------------###################}
+                            {% if articlevideo %}
+                                {% for article in articlevideo %}
+                                    <li class="item-video">
+                                        <iframe src="{{ article.url }}" frameborder="0" allowfullscreen></iframe>
+                                        <div align="center">
+                                            <a class="btn button-video" href="{{ path('jamilati_videopage_view',{'id':article.id}) }}">إقرأ المقال
+                                            </a>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            {% else %}
+                                <div class="alert alert-warning text-right">
+                                    <p>لا يوجد أي محتوى</p>
+                                </div>
+                            {% endif %}
+                            {#################--------------------Latests Videos-----------------------###################}
+                        </ul>
+                        <hr class="endvideo" />
+                        <br />
+                        <br />
+                        <h2 class="titreweather">احوال الطقس اليوم</h2>
+                        <br />
+                        <div class="weather-app">
+                            <div class="left-app">
+                                <div class="temperature"><span id="temperature">0</span>&deg;</div> 
+                                <div class="location"><span id="location">Unknown</span></div>
+                            </div>	
+                            <div class="right-app">
+                                <div class="top-app">
+                                    <img id="icon" width="75px" src="{{ asset('assets/img/weather/codes/03d.png') }}" />
+                                </div>
+                                <div class="bottom-app">
+                                    <div class="humidity">
+                                        <img src="{{ asset('assets/img/weather/humidity.png') }}" height="16px" />
+                                        <span id="humidity">0</span>%
+                                    </div>
+                                    <div class="wind">
+                                        <span id="wind">0</span> mph <span id="direction">N</span>°
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <hr class="endbar" />
+                        <br />
+                        <br />
+                        <h2 class="titresubscribe">النشرة البريدية</h2>
+                        <br />
+                        <div class="thumbnail well well-small text-center" id="newsletter">
+                            <p>تسجلي في نشرة جميلتي الإلكترونية</p>
+                            <br />
+                            <form action="{{ path('jamilati_homepage_email') }}" method="get" id="formsub">
+                                <div class="input-group">
+                                    <input type="email" name="email" class="form-control" placeholder="أدخلي بريدك الإلكتروني" aria-describedby="sizing-addon2" required=true />
+                                    <span class="input-group-addon" id="sizing-addon2"><i class="fa fa-envelope" aria-hidden="true" ></i></span>
+                                </div>
+                                <br />
+                                <input type="submit" value="إشتركي الآن" class="btn btn-large" />
+                            </form>
+                        </div>
+                        <br />
+                        <hr class="endbar" />
+                        <br />
+                        <br />
+                        <h2 class="titreconseil">نصيحة اليوم</h2>
+                        <br />
+                        {#################--------------------Latests Advice-----------------------###################}
+                        {% if articleadvice %}
+                            {% for article in articleadvice|sort %}
+                                <blockquote class="blockquote-reverse conseils">
+                                    <p class="text-center">{{ article.content|nl2br }}</p>
+                                    <footer> <cite title="Source Title">{{ article.author }}</cite></footer>
+                                </blockquote>
+                            {% endfor %}
+                        {% else %}
+                            <div class="alert alert-warning text-right">
+                                <p>لا يوجد أي محتوى</p>
+                            </div>
+                        {% endif %}
+                        {#################--------------------Latests Advice-----------------------###################}
+                        <br />
+                        <hr class="endbar" />
+                        <br />
+                        <br />
+                        <h2 class="titrenewconcepts">أحدث الإصدارات</h2>
+                        <br />
+                        <div class="newconceptgroup">
+                            {#################--------------------Latests Inventions-----------------------###################}
+                            {% if articleinvention %}
+                                {% for article in articleinvention %}
+                                    <a id="itemConcept">
+                                        <div class="concept">
+                                            <img src="{{ asset('uploads/Invention/Images/'~article.filename) }}" class="img-responsive" />
+                                            <p class="text-center">{{ article.titre }}</p>
+                                        </div>
+                                    </a>
+                                {% endfor %}
+                            {% else %}
+                                <div class="alert alert-warning text-right">
+                                    <p>لا يوجد أي محتوى</p>
+                                </div>
+                            {% endif %}
+                            {#################--------------------Latests Inventions-----------------------###################}
+                        </div>
+                        <br />
+                        <hr class="endbar" />
+                        <br />
+                        
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="well" id="contentbar">
+                        {% block Articles %}
+                        <!-- Actualité -->
+                        <h2 class="titreactu"> آخر المستجدات </h2>
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">      
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators" id="points">
+
+                                {% if lastmode %}
+                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                {% else %}
+                                {% endif %}
+                                {% if lastbeauty %}
+                                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                {% else %}
+                                {% endif %}
+                                {% if lastkitchen %}
+                                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                {% else %}
+                                {% endif %}
+                                {% if lasthealth %}
+                                    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                                {% else %}
+                                {% endif %}
+                                {% if lastfamily %}
+                                    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+                                {% else %}
+                                {% endif %}
+                                {% if lastnews %}
+                                    <li data-target="#carousel-example-generic" data-slide-to="5"></li>
+                                {% else %}
+                                {% endif %}
+                                {% if laststar %}
+                                    <li data-target="#carousel-example-generic" data-slide-to="6"></li>
+                                {% else %}
+                                {% endif %}
+
+                            </ol>
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox">
+                                {% if lastmode %}
+                                    <div class="item active">
+                                        <a href="{{ path('jamilati_modepage_view', {'id':lastmode.id}) }}">
+                                            <img src="{{ asset('uploads/Mode/Cover/'~lastmode.filename) }}" alt="{{ lastmode.filename }}">
+                                            <div class="carousel-caption">
+                                                <p>{{ lastmode.content1 }}</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                {% else %}
+
+                                {% endif %}
+
+                                {% if lastbeauty %}
+                                    <div class="item">
+                                        <a href="{{ path('jamilati_beautypage_view', {'id':lastbeauty.id}) }}">
+                                            <img src="{{ asset('uploads/Beauty/Cover/'~lastbeauty.filename) }}" alt="{{ lastbeauty.filename }}">
+                                            <div class="carousel-caption">
+                                                <p>{{ lastbeauty.content1 }}</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                {% else %}
+
+                                {% endif %}
+
+                                {% if lastkitchen %}
+                                    <div class="item">
+                                        <a href="{{ path('jamilati_kitchenpage_view', {'id':lastkitchen.id}) }}">
+                                            <img src="{{ asset('uploads/Kitchen/Cover/'~lastkitchen.filename) }}" alt="{{ lastkitchen.filename }}">
+                                            <div class="carousel-caption">
+                                                <p>{{ lastkitchen.content1 }}</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                {% else %}
+
+                                {% endif %}
+
+                                {% if lasthealth %}
+                                    <div class="item">
+                                        <a href="{{ path('jamilati_healthpage_view', {'id':lasthealth.id}) }}">
+                                            <img src="{{ asset('uploads/Health/Cover/'~lasthealth.filename) }}" alt="{{ lasthealth.filename }}">
+                                            <div class="carousel-caption">
+                                                <p>{{ lasthealth.content1 }}</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                {% else %}
+
+                                {% endif %}
+
+                                {% if lastfamily %}
+                                    <div class="item">
+                                        <a href="{{ path('jamilati_familypage_view', {'id':lastfamily.id}) }}">
+                                            <img src="{{ asset('uploads/Family/Cover/'~lastfamily.filename) }}" alt="{{ lastfamily.filename }}">
+                                            <div class="carousel-caption">
+                                                <p>{{ lastfamily.content1 }}</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                {% else %}
+
+                                {% endif %}
+
+                                {% if lastnews %}
+                                    <div class="item">
+                                        <a href="{{ path('jamilati_newspage_view', {'id':lastnews.id}) }}">
+                                            <img src="{{ asset('uploads/News/Cover/'~lastnews.filename) }}" alt="{{ lastnews.filename }}">
+                                            <div class="carousel-caption">
+                                                <p>{{ lastnews.content1 }}</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                {% else %}
+
+                                {% endif %}
+
+                                {% if laststar %}
+                                    <div class="item">
+                                        <a href="{{ path('jamilati_starspage_view', {'id':laststar.id}) }}">
+                                            <img src="{{ asset('uploads/Stars/Cover/'~laststar.filename) }}" alt="{{ laststar.filename }}">
+                                            <div class="carousel-caption">
+                                                <p>{{ laststar.content1 }}</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                {% else %}
+
+                                {% endif %}
+
+                            </div>
+                            <!-- Controls -->
+                            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                        <hr class="endbar" />
+                        <!-- Fin Actualité -->
+                        <br />
+                        <!-- Mode -->
+                        <h2 class="titremode"> موضة </h2>
+                        {#################--------------------Latests Mode-----------------------###################}
+                        {% if articlemode %}
+                            <div id="mode_carousel" class="carousel slide" data-ride="carousel" data-interval="2500" >
+                                <!--Warpper for slides-->
+                                <div class="carousel-inner">
+                                    {% set maxIdMode = lastmode.id %}
+                                    {% for article in articlemode %}
+                                        <div class="item {% if article.id == maxIdMode %}active{% endif %}">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-xs-6 caption">
+                                                        <h2>{{ article.titre }}</h2>
+                                                        <p>{{ article.content1|nl2br }}</p>
+                                                    </div>
+                                                    <div class="col-xs-6">
+                                                        <a href="{{ path('jamilati_modepage_view', {'id':article.id}) }}" >
+                                                            <img src="{{ asset('uploads/Mode/Cover/'~article.filename) }}" class="img-responsive" align="right" width="200" />
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <!-- End Carousel Inner -->
+                                <div class="controls">
+                                    <ul class="nav">
+                                        {% set maxIdMode = lastmode.id %}
+                                        {% for key, article in articlemode %}
+                                                <li data-target="#mode_carousel" data-slide-to="{{ key }}" class="img-responsive {% if article.id == maxIdMode %}active{% else %} {% endif %}">
+                                                    <a href="#">
+                                                        <img src="{{ asset('uploads/Mode/Cover/'~article.filename) }}"  width="90"  />
+                                                        <small>{{ article.titre }}</small>
+                                                    </a>
+                                                </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-warning text-right">
+                                <p>لا يوجد أي محتوى</p>
+                            </div>
+                        {% endif %}
+                        {#################--------------------Latests Mode-----------------------###################}
+
+
+                        <hr class="endmode" />
+                        <!-- Fin Mode -->
+                        <br />
+                        <!-- Beauty -->
+                        <h2 class="titrebeauty"> جمال </h2>
+                        {#################--------------------Latests Beauty-----------------------###################}
+                        {% if articlebeauty %}
+                            <div class="sliderbeauty">
+                                <div id="myCarousel" class="carousel slide text-right">
+                                    <div class="pull-right">
+                                        <ul style="margin:0px;" class="control-box pager">
+                                            <li><a class="prevBeauty" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a></li>
+                                            <li><a class="nextBeauty" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="carousel-inner">
+                                        {% set maxIdBeauty = lastbeauty.id %}
+                                        {% for article in articlebeauty %}
+                                            <div class="item {% if article.id == maxIdBeauty %}active{% else %} {% endif %}">
+                                                <div class="row">
+                                                    <div class="col-sm-8">
+                                                        <a href="{{ path('jamilati_beautypage_view', {'id':article.id}) }}">
+                                                            <img class="img-responsive" alt="car1" src="{{ asset('uploads/Beauty/Cover/'~article.filename) }}">
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <h3>{{ article.titre }}</h3>
+                                                        <h6>{{ article.date|date('d/m/Y') }}</h6>
+                                                        <p>{{ article.content1|nl2br }}</p>
+                                                        <a href="{{ path('jamilati_beautypage_view', {'id':article.id}) }}" class="btn btn-default beautybutton">دخول</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-warning text-right">
+                                <p>لا يوجد أي محتوى</p>
+                            </div>
+                        {% endif %}
+                        {#################--------------------Latests Beauty-----------------------###################}
+
+
+                        <hr class="endbeauty" />
+                        <!-- Fin Beauty -->
+                        <br />
+                        <!--Kitchen-->
+                        <h2 class="titrekitchen"> مطبخ </h2>
+
+                        {#################--------------------Latests Kitchen-----------------------###################}
+                        {% if articlekitchen %}
+                            <div id="carousel-example-generic-second" class="carousel slide" data-ride="carousel">
+                                <!-- Indicators -->
+                                <ol class="carousel-indicators" id="pointss">
+                                    {% set maxIdKitchen = lastkitchen.id %}
+                                    {% for key, article in articlekitchen %}
+                                        <li data-target="#carousel-example-generic-second" data-slide-to="{{ key }}" class="{% if article.id == maxIdKitchen %}active{% else %}{% endif %}"></li>
+
+                                    {% endfor %}
+
+                                </ol>
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner" role="listbox">
+                                    {% set maxIdKitchen = lastkitchen.id %}
+                                    {% for article in articlekitchen %}
+
+                                        <div class="item {% if article.id == maxIdKitchen %}active{% else %}{% endif %}">
+                                            <a href="{{ path('jamilati_kitchenpage_view', {'id':article.id}) }}">
+                                                <img src="{{ asset('uploads/Kitchen/Cover/'~article.filename) }}" width="650" alt="">
+                                                <div class="carousel-caption">
+                                                    <p>{{ article.titre }}</p>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                    {% endfor %}
+                                </div>
+
+                                <!-- Controls -->
+                                <a class="left carousel-control" href="#carousel-example-generic-second" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#carousel-example-generic-second" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+
+
+                        {% else %}
+
+                            <div class="alert alert-warning text-right">
+                                <p>لا يوجد أي محتوى</p>
+                            </div>
+
+                        {% endif %}
+                        {#################--------------------Latests Kitchen-----------------------###################}
+
+
+
+                        <hr class="endkitchen"/>
+                        <!--Fin Kitchen-->
+                        <br />
+                        <!--Health-->
+                        <h2 class="titrehealth"> صحة </h2>
+
+                        {#################--------------------Latests Health-----------------------###################}
+                        {% if articlehealth %}
+                            <div class="sliderhealth">
+                                <div id="myCarouselHealth" class="carousel slide text-right">
+                                    <div class="pull-right">
+                                        <ul style="margin:0px;" class="control-box pager">
+                                            <li><a class="prevHealth" href="#myCarouselHealth" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a></li>
+                                            <li><a class="nextHealth" href="#myCarouselHealth" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="carousel-inner">
+                                        {% set maxIdHealth = lasthealth.id %}
+                                        {% for article in articlehealth|sort %}
+                                            <div class="item {% if article.id == maxIdHealth %}active{% else %} {% endif %}">
+                                                <div class="row">
+                                                    <div class="col-sm-8">
+                                                        <a href="{{ path('jamilati_healthpage_view', {'id':article.id}) }}">
+                                                            <img class="img-responsive" alt="car1" src="{{ asset('uploads/Health/Cover/'~article.filename) }}">
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <h3>{{ article.titre }}</h3>
+                                                        <h6>{{ article.date|date('d/m/Y') }}</h6>
+                                                        <p>{{ article.content1 }}</p>
+                                                        <a href="{{ path('jamilati_healthpage_view', {'id':article.id}) }}" class="btn btn-default healthbutton">دخول</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-warning text-right">
+                                <p>لا يوجد أي محتوى</p>
+                            </div>
+                        {% endif %}
+                        {#################--------------------Latests Health-----------------------###################}
+                        <hr class="endhealth"/>
+                        <!--Fin Health-->
+                        <br />
+                        <!--Family-->
+                        <h2 class="titrefamily"> أسرة </h2>
+                        {#################--------------------Latests Famiy-----------------------###################}
+                        {% if articlefamily %}
+                            <div id="carousel-example-generic-third" class="carousel slide" data-ride="carousel">
+                                <!-- Indicators -->
+                                <ol class="carousel-indicators" id="pointsss">
+                                    {% set maxIdFamily = lastfamily.id %}
+                                    {% for key, article in articlefamily %}
+                                        <li data-target="#carousel-example-generic-third" data-slide-to="{{ key }}" class="{% if article.id == maxIdFamily %} active{% else %} {% endif %}"></li>
+                                    {% endfor %}
+
+                                </ol>
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner" role="listbox">
+                                    {% set maxIdFamily = lastfamily.id %}
+                                    {% for article in articlefamily %}
+
+                                        <div class="item {% if article.id == maxIdFamily %} active{% else %} {% endif %}">
+                                            <a href="{{ path('jamilati_familypage_view', {'id':article.id}) }}">
+                                                <img src="{{ asset('uploads/Family/Cover/'~article.filename) }}" width="650" alt="">
+                                                <div class="carousel-caption">
+                                                    <p>{{ article.titre }}</p>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                    {% endfor %}
+                                </div>
+
+                                <!-- Controls -->
+                                <a class="left carousel-control" href="#carousel-example-generic-third" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#carousel-example-generic-third" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+
+
+                        {% else %}
+
+                            <div class="alert alert-warning text-right">
+                                <p>لا يوجد أي محتوى</p>
+                            </div>
+
+                        {% endif %}
+                        {#################--------------------Latests family-----------------------###################}
+
+                        <hr class="endfamily"/>
+                        <!--Fin Family-->
+                        <br />
+                        <!--News-->
+                        <h2 class="titrenews"> أخبار </h2>
+                        {#################--------------------Latests News-----------------------###################}
+                        {% if articlenews %}
+                            <div class="slidernews">
+                                <div id="myCarouselNews" class="carousel slide text-right">
+                                    <div class="pull-right">
+                                        <ul style="margin:0px;" class="control-box pager">
+                                            <li><a class="prevNews" href="#myCarouselNews" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a></li>
+                                            <li><a class="nextNews" href="#myCarouselNews" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="carousel-inner">
+                                        {% set maxIdNews = lastnews.id %}
+                                        {% for article in articlenews|sort %}
+                                            <div class="item {% if article.id == maxIdNews %}active{% else %} {% endif %}">
+                                                <div class="row">
+                                                    <div class="col-sm-8">
+                                                        <a href="{{ path('jamilati_newspage_view',{'id':article.id}) }}">
+                                                            <img class="img-responsive" alt="car1" src="{{ asset('uploads/News/Cover/'~article.filename) }}">
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <h3>{{ article.titre }}</h3>
+                                                        <h6>{{ article.date|date('d/m/Y') }}</h6>
+                                                        <p>{{ article.content1 }}</p>
+                                                        <a href="{{ path('jamilati_newspage_view',{'id':article.id}) }}" class="btn btn-default newsbutton">دخول</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-warning text-right">
+                                <p>لا يوجد أي محتوى</p>
+                            </div>
+                        {% endif %}
+                        {#################--------------------Latests News-----------------------###################}
+                        <hr class="endnews"/>
+                        <!--Fin News-->
+                        <br />
+                        <!--Stars-->
+                        <h2 class="titrestars"> مشاهير </h2>
+                         <!--Testimonials starting-->
+
+                        {#################--------------------Latests Stars-----------------------###################}
+                        {% if articlestar %}
+                            <div id="testimonials">
+                                <div class="row test">
+                                    <div class="col-xs-12">
+                                        <div class="testimonials-list">
+                                            {% for article in articlestar %}
+                                                <!-- Single Testimonial -->
+                                                <div class="single-testimonial">
+                                                    <div class="testimonial-holder">
+                                                        <div class="testimonial-content">
+                                                            {{ article.content1[:25]|nl2br }}
+                                                            <div class="testimonial-caret"><i class="fa fa-caret-down"></i></div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="testimonial-user clearfix">
+                                                                <div class="testimonial-user-image"><img src="{{ asset('uploads/Stars/Cover/'~article.filename) }}" alt="{{ article.filename }}" width="76"></div>
+                                                                <div class="testimonial-user-name">
+                                                                    <p>
+                                                                        {{ article.titre }}
+                                                                        <br>
+                                                                        <a href="{{ path('jamilati_starspage_view',{'id':article.id}) }}">اكتشف</a>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- End of Single Testimonial -->
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-warning text-right">
+                                <p>لا يوجد أي محتوى</p>
+                            </div>
+                        {% endif %}
+                        {#################--------------------Latests Stars-----------------------###################}
+
+
+                        <!--End of Testimonials -->
+                        <hr class="endstars"/>
+                        <!--Fin Stars-->
+
+                        {% endblock %}
+                    </div>    
+                </div>
+                <div class="col-md-3">
+                    <div class="well" id="rightbar">
+                        <h2 class="titreinfo"> فلاش انفو </h2>
+                        <br />
+                        <ul class="nav infos">
+                            {% if lastmode %}
+                                <li>
+                                    <a href="{{ path('jamilati_modepage_view', {'id':lastmode.id}) }}" >{{ lastmode.titre }}</a>
+                                </li>
+                            {% else %}
+                            {% endif %}
+                            {% if lastbeauty %}
+                                <li>
+                                    <a href="{{ path('jamilati_beautypage_view', {'id':lastbeauty.id}) }}">{{ lastbeauty.titre }}</a>
+                                </li>
+                            {% else %}
+                            {% endif %}
+                            {% if lastkitchen %}
+                                <li>
+                                    <a href="{{ path('jamilati_kitchenpage_view', {'id':lastkitchen.id}) }}">{{ lastkitchen.titre }}</a>
+                                </li>
+                            {% else %}
+                            {% endif %}
+                            {% if lasthealth %}
+                                <li>
+                                    <a href="{{ path('jamilati_healthpage_view', {'id':lasthealth.id}) }}">{{ lasthealth.titre }}</a>
+                                </li>
+                            {% else %}
+                            {% endif %}
+                            {% if lastfamily %}
+                                <li>
+                                    <a href="{{ path('jamilati_familypage_view', {'id':lastfamily.id}) }}">{{ lastfamily.titre }}</a>
+                                </li>
+                            {% else %}
+                            {% endif %}
+                            {% if lastnews %}
+                                <li>
+                                    <a href="{{ path('jamilati_newspage_view', {'id':lastnews.id}) }}">{{ lastnews.titre }}</a>
+                                </li>
+                            {% else %}
+                            {% endif %}
+                            {% if laststar %}
+                                <li>
+                                    <a href="{{ path('jamilati_starspage_view', {'id':laststar.id}) }}">{{ laststar.titre }}</a>
+                                </li>
+                            {% else %}
+                            {% endif %}
+                        </ul>
+                        <br />
+                        <hr class="endbar" />
+                        <br />
+                        <br />
+                        <h2 class="titrehoro">برجك اليوم</h2>
+                        <br />
+                        <ul class="nav nav-pills horos">
+                            {#################--------------------Latests Horo-----------------------###################}
+                            {% if horoscope %}
+                                {% for article in horoscope|sort %}
+                                    {% if article.name == 'الاسد' %}
+                                        <li>
+                                            <a href="#" data-toggle="modal" data-target="#{{ article.id }}">
+                                                <img src="{{ asset('assets/img/horoscope/leo-sm.png') }}" class="img-responsive"/>
+                                                <h5>الاسد</h5>
+                                            </a>
+                                        </li>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="{{ article.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <a href="#" class="btn btn-xs btn-danger close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>
+                                                        <h4 class="modal-title" id="myModalLabel"><b>{{ article.name }}</b> &nbsp;&nbsp;&nbsp; <small><i>من 23 يوليوز إلى 22 غشت</i></small></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-10">
+                                                                {{ article.content }}
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <img src="{{ asset('assets/img/horoscope/leo-sm.png') }}" class="img-responsive"/>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    {% if article.name == 'الدلو' %}
+                                        <li>
+                                            <a href="#" data-toggle="modal" data-target="#{{ article.id }}">
+                                                <img src="{{ asset('assets/img/horoscope/aquarius-sm.png') }}" class="img-responsive"/>
+                                                <h5>الدلو</h5>
+                                            </a>
+                                        </li>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="{{ article.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <a href="#" class="btn btn-xs btn-danger close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>
+                                                        <h4 class="modal-title" id="myModalLabel"><b>{{ article.name }}</b> &nbsp;&nbsp;&nbsp; <small><i>من 21 يناير إلى 19 فبراير</i></small></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-10">
+                                                                {{ article.content }}
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <img src="{{ asset('assets/img/horoscope/aquarius-sm.png') }}" class="img-responsive"/>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    {% if article.name == 'الجدي' %}
+                                        <li>
+                                            <a href="#" data-toggle="modal" data-target="#{{ article.id }}">
+                                                <img src="{{ asset('assets/img/horoscope/aries-sm.png') }}" class="img-responsive"/>
+                                                <h5>الجدي</h5>
+                                            </a>
+                                        </li>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="{{ article.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <a href="#" class="btn btn-xs btn-danger close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>
+                                                        <h4 class="modal-title" id="myModalLabel"><b>{{ article.name }}</b> &nbsp;&nbsp;&nbsp; <small><i>من 22 دجنبر إلى 20 يناير</i></small></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-10">
+                                                                {{ article.content }}
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <img src="{{ asset('assets/img/horoscope/aries-sm.png') }}" class="img-responsive"/>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                <div class="alert alert-warning text-right">
+                                    <p>لا يوجد أي محتوى</p>
+                                </div>
+                            {% endif %}
+                            {#################--------------------Latests Horo-----------------------###################}
+                        </ul>
+                        <ul class="nav nav-pills horos">
+                            {#################--------------------Latests Horo-----------------------###################}
+                            {% if horoscope %}
+                                {% for article in horoscope|sort %}
+                                    {% if article.name == 'السرطان' %}
+                                        <li>
+                                            <a href="#" data-toggle="modal" data-target="#{{ article.id }}">
+                                                <img src="{{ asset('assets/img/horoscope/cancer-sm.png') }}" class="img-responsive"/>
+                                                <h5>السرطان</h5>
+                                            </a>
+                                        </li>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="{{ article.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <a href="#" class="btn btn-xs btn-danger close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>
+                                                        <h4 class="modal-title" id="myModalLabel"><b>{{ article.name }}</b> &nbsp;&nbsp;&nbsp; <small><i>من 22 يونيو إلى 22 يوليوز</i></small></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-10">
+                                                                {{ article.content }}
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <img src="{{ asset('assets/img/horoscope/cancer-sm.png') }}" class="img-responsive"/>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    {% if article.name == 'الحمل' %}
+                                        <li>
+                                            <a href="#" data-toggle="modal" data-target="#{{ article.id }}">
+                                                <img src="{{ asset('assets/img/horoscope/capricornus-sm.png') }}" class="img-responsive"/>
+                                                <h5>الحمل</h5>
+                                            </a>
+                                        </li>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="{{ article.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <a href="#" class="btn btn-xs btn-danger close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>
+                                                        <h4 class="modal-title" id="myModalLabel"><b>{{ article.name }}</b> &nbsp;&nbsp;&nbsp; <small><i>من 21 مارس إلى 20 أبريل</i></small></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-10">
+                                                                {{ article.content }}
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <img src="{{ asset('assets/img/horoscope/capricornus-sm.png') }}" class="img-responsive"/>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    {% if article.name == 'الجوزاء' %}
+                                        <li>
+                                            <a href="#" data-toggle="modal" data-target="#{{ article.id }}">
+                                                <img src="{{ asset('assets/img/horoscope/gemini-sm.png') }}" class="img-responsive"/>
+                                                <h5>الجوزاء</h5>
+                                            </a>
+                                        </li>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="{{ article.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <a href="#" class="btn btn-xs btn-danger close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>
+                                                        <h4 class="modal-title" id="myModalLabel"><b>{{ article.name }}</b> &nbsp;&nbsp;&nbsp; <small><i>من 22 ماي إلى 21 يونيو</i></small></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-10">
+                                                                {{ article.content }}
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <img src="{{ asset('assets/img/horoscope/gemini-sm.png') }}" class="img-responsive"/>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                <div class="alert alert-warning text-right">
+                                    <p>لا يوجد أي محتوى</p>
+                                </div>
+                            {% endif %}
+                            {#################--------------------Latests Horo-----------------------###################}
+                        </ul>
+
+                        <ul class="nav nav-pills horos">
+                            {#################--------------------Latests Horo-----------------------###################}
+                            {% if horoscope %}
+                                {% for article in horoscope|sort %}
+                                    {% if article.name == 'الميزان' %}
+                                        <li>
+                                            <a href="#" data-toggle="modal" data-target="#{{ article.id }}">
+                                                <img src="{{ asset('assets/img/horoscope/libra-sm.png') }}" class="img-responsive"/>
+                                                <h5>الميزان</h5>
+                                            </a>
+                                        </li>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="{{ article.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <a href="#" class="btn btn-xs btn-danger close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>
+                                                        <h4 class="modal-title" id="myModalLabel"><b>{{ article.name }}</b> &nbsp;&nbsp;&nbsp; <small><i>من 23 شتنبر إلى 20 أكتوبر</i></small></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-10">
+                                                                {{ article.content }}
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <img src="{{ asset('assets/img/horoscope/libra-sm.png') }}" class="img-responsive"/>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    {% if article.name == 'الحوت' %}
+                                        <li>
+                                            <a href="#" data-toggle="modal" data-target="#{{ article.id }}">
+                                                <img src="{{ asset('assets/img/horoscope/pisces-sm.png') }}" class="img-responsive"/>
+                                                <h5>الحوت</h5>
+                                            </a>
+                                        </li>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="{{ article.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <a href="#" class="btn btn-xs btn-danger close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>
+                                                        <h4 class="modal-title" id="myModalLabel"><b>{{ article.name }}</b> &nbsp;&nbsp;&nbsp; <small><i>من 20 فبراير إلى 20 مارس</i></small></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-10">
+                                                                {{ article.content }}
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <img src="{{ asset('assets/img/horoscope/pisces-sm.png') }}" class="img-responsive"/>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    {% if article.name == 'القوس' %}
+                                        <li>
+                                            <a href="#" data-toggle="modal" data-target="#{{ article.id }}">
+                                                <img src="{{ asset('assets/img/horoscope/sagittarius-sm.png') }}" class="img-responsive"/>
+                                                <h5>القوس</h5>
+                                            </a>
+                                        </li>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="{{ article.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <a href="#" class="btn btn-xs btn-danger close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>
+                                                        <h4 class="modal-title" id="myModalLabel"><b>{{ article.name }}</b> &nbsp;&nbsp;&nbsp; <small><i>من 23 نونبر إلى 21 دجنبر</i></small></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-10">
+                                                                {{ article.content }}
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <img src="{{ asset('assets/img/horoscope/sagittarius-sm.png') }}" class="img-responsive"/>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                <div class="alert alert-warning text-right">
+                                    <p>لا يوجد أي محتوى</p>
+                                </div>
+                            {% endif %}
+                            {#################--------------------Latests Horo-----------------------###################}
+                        </ul>
+
+                        <ul class="nav nav-pills horos">
+                            {#################--------------------Latests Horo-----------------------###################}
+                            {% if horoscope %}
+                                {% for article in horoscope|sort %}
+                                    {% if article.name == 'العقرب' %}
+                                        <li>
+                                            <a href="#" data-toggle="modal" data-target="#{{ article.id }}">
+                                                <img src="{{ asset('assets/img/horoscope/scorpius-sm.png') }}" class="img-responsive"/>
+                                                <h5>العقرب</h5>
+                                            </a>
+                                        </li>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="{{ article.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <a href="#" class="btn btn-xs btn-danger close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>
+                                                        <h4 class="modal-title" id="myModalLabel"><b>{{ article.name }}</b> &nbsp;&nbsp;&nbsp; <small><i>من 21 أكتوبر إلى 22 نونبر</i></small></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-10">
+                                                                {{ article.content }}
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <img src="{{ asset('assets/img/horoscope/scorpius-sm.png') }}" class="img-responsive"/>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    {% if article.name == 'الثور' %}
+                                        <li>
+                                            <a href="#" data-toggle="modal" data-target="#{{ article.id }}">
+                                                <img src="{{ asset('assets/img/horoscope/taurus-sm.png') }}" class="img-responsive"/>
+                                                <h5>الثور</h5>
+                                            </a>
+                                        </li>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="{{ article.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <a href="#" class="btn btn-xs btn-danger close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>
+                                                        <h4 class="modal-title" id="myModalLabel"><b>{{ article.name }}</b> &nbsp;&nbsp;&nbsp; <small><i>من 21 أبريل إلى 21 ماي</i></small></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-10">
+                                                                {{ article.content }}
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <img src="{{ asset('assets/img/horoscope/taurus-sm.png') }}" class="img-responsive"/>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    {% if article.name == 'العذراء' %}
+                                        <li>
+                                            <a href="#" data-toggle="modal" data-target="#{{ article.id }}">
+                                                <img src="{{ asset('assets/img/horoscope/virgo-sm.png') }}" class="img-responsive"/>
+                                                <h5>العذراء</h5>
+                                            </a>
+                                        </li>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="{{ article.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <a href="#" class="btn btn-xs btn-danger close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>
+                                                        <h4 class="modal-title" id="myModalLabel"><b>{{ article.name }}</b> &nbsp;&nbsp;&nbsp; <small><i>من 23 غشت إلى 22 شتنبر</i></small></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-10">
+                                                                {{ article.content }}
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <img src="{{ asset('assets/img/horoscope/virgo-sm.png') }}" class="img-responsive"/>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                <div class="alert alert-warning text-right">
+                                    <p>لا يوجد أي محتوى</p>
+                                </div>
+                            {% endif %}
+                            {#################--------------------Latests Horo-----------------------###################}
+                        </ul>
+
+
+                        <br />
+                        <hr class="endbar">
+                        <br />
+                        <br />
+                        <h2 class="titreImgOfDay">صورة اليوم</h2>
+                        <br />
+                        {#################--------------------Latests DayPicture-----------------------###################}
+                        {% if articleimgday %}
+                            <div class="panel ImgOfDay">
+                                {% for article in articleimgday|sort %}
+                                    <div class="panel-heading pantitreImg text-center">{{ article.titre }}</div>
+                                    <div class="panel-body text-center">
+                                        <div class="thumbnail">
+                                            <img src="{{ asset('uploads/ImageDay/Image/'~article.filename) }}" alt="{{ article.filename }}">
+                                            <div class="caption">
+                                                <h5 class="text-center" style="font-family: 'Changa'; font-weight: bold;">{{ article.comment|nl2br }}</h5>
+                                                {#<a href="#" class="btn" role="button">إكتشفي</a>#}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class="alert alert-warning text-right">
+                                <p>لا يوجد أي محتوى</p>
+                            </div>
+                        {% endif %}
+                        {#################--------------------Latests DayPicture-----------------------###################}
+
+                        <br />
+                        <hr class="endbar"/>
+                        <br />
+                        <br />
+                        <h2 class="titreTonAvis">ما رأيك في هذا ؟</h2>
+                        <br />
+                        {#################--------------------Latests Sondage-----------------------###################}
+                        {% if sondage %}
+                        <div class="avisPerso">
+                            <div class="headingAvis">
+                                <h3 class="headingTop text-center">فقرة لإستطلاع رأيك الشخصي حول بعض المنتوجات</h3>
+                            </div>
+                            <br />
+                        </div>
+                                {% for article in sondage|sort %}
+                                    <h6 class="headingTop text-center">{{ article.lib }}</h6>
+                                    <form class="formAvis" action="{{ path('jamilati_homepage_vote', {'id':article.id}) }}" method="get" >
+                                        <div class="btn-group imgBtnGroup btn-group-justified" data-toggle="buttons">
+                                            <label class="btn product" for="image1">
+                                                <div class="productImg">
+                                                    <img src="{{ asset('uploads/Sondage/Images/Image1/'~article.filename1) }}" alt="{{ article.filename1 }}"  />
+                                                </div>
+                                                <input type="radio" name="image1">
+                                                <br />
+                                                <br />
+                                                <span class="badge">{{ article.nbvotes1 }}</span>
+                                            </label>
+
+
+                                            <label class="btn product"  for="image2">
+                                                <div class="productImg">
+                                                    <img src="{{ asset('uploads/Sondage/Images/Image2/'~article.filename2) }}" alt="{{ article.filename2 }}"  />
+                                                </div>
+                                                <input type="radio" name="image2">
+                                                <br />
+                                                <br />
+                                                <span class="badge">{{ article.nbvotes2 }}</span>
+                                            </label>
+                                        </div>
+                                        <div class="footerAvis clearfix">
+                                            <div align="center">
+                                                <button type="submit"  class="btn btn-default avis" role="button">أرسلي رأيك</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <br />
+
+                                {% endfor %}
+                        {% else %}
+                            <div class="alert alert-warning text-right">
+                                <p>لا يوجد أي محتوى</p>
+                            </div>
+                        {% endif %}
+                        {#################--------------------Latests Sondage-----------------------###################}
+
+                        <br />
+                        <hr class="endbar"/>
+                        <br />
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+
