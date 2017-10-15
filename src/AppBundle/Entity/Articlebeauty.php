@@ -141,6 +141,36 @@ class Articlebeauty
      */
     private $updatedAt;
 
+    /**
+     * @var integer
+     * @ORM\Column(name="views", type="integer")
+     */
+    private $views = 0;
+
+    public function increaseViews(){
+        $this->views++;
+    }
+
+    public function decreaseViews(){
+        $this->views--;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getViews()
+    {
+        return $this->views;
+    }
+
+    /**
+     * @param mixed $views
+     */
+    public function setViews($views)
+    {
+        $this->views = $views;
+    }
+
     public function __toString()
     {
         return $this->getTitre();

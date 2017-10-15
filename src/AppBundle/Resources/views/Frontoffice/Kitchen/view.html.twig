@@ -31,25 +31,28 @@
 
         <div class="row article">
             <div class="col-md-12">
-                <h1 align="center" class="article-titre">{{ kitchen.titre }}</h1>
-                <img src="{{ asset('uploads/Kitchen/Cover/'~kitchen.filename) }}" alt="{{ kitchen.filename }}" class="img-responsive" style="padding: 0 35px;" />
-                <br />
-                <div>
-                    <span class="label label-kitchen" dir="rtl">{{ kitchen.date|date('d-m-Y') }}</span>
-                    <div class="pull-right">
-                        <span class="label label-kitchen" dir="rtl">حرر من طرف {{ kitchen.user }}</span>
+                <div class="addthis_inline_share_toolbox">
+                    <h1 align="center" class="article-titre">{{ kitchen.titre }}</h1>
+                    <img src="{{ asset('uploads/Kitchen/Cover/'~kitchen.filename) }}" alt="{{ kitchen.filename }}" class="img-responsive" style="padding: 0 35px;" />
+                    <br />
+                    <div>
+                        <span class="label label-kitchen" dir="rtl">{{ kitchen.date|date('d-m-Y') }}</span>
+                        <span class="label label-kitchen" dir="rtl" style="position: relative; left:30%;" >عدد المشاهدات  {{ kitchen.views }}</span>
+                        <div class="pull-right">
+                            <span class="label label-kitchen" dir="rtl">حرر من طرف {{ kitchen.user }}</span>
+                        </div>
                     </div>
-                </div>
-                <br />
-                <p>{{ kitchen.content1|nl2br }}</p>
-                <br />
-                {% if kitchen.content2 %}<p>{{ kitchen.content2|nl2br }}</p><br />{% endif %}
-                {% if kitchen.content3 %}<p>{{ kitchen.content3|nl2br }}</p><br />{% endif %}
-                <ul class="list">
-                    {% if kitchen.listcontent1 %}<li class="list-item"><b>{{ kitchen.listtitre1 }} :</b> {{ kitchen.listcontent1 }} </li>{% endif %}
-                    {% if kitchen.listcontent2 %}<li class="list-item"><b>{{ kitchen.listtitre2 }} :</b> {{ kitchen.listcontent2 }} </li>{% endif %}
-                    {% if kitchen.listcontent3 %}<li class="list-item"><b>{{ kitchen.listtitre3 }} :</b> {{ kitchen.listcontent3 }} </li>{% endif %}
-                </ul>
+                    <br />
+                    <p>{{ kitchen.content1|nl2br }}</p>
+                    <br />
+                    {% if kitchen.content2 %}<p>{{ kitchen.content2|nl2br }}</p><br />{% endif %}
+                    {% if kitchen.content3 %}<p>{{ kitchen.content3|nl2br }}</p><br />{% endif %}
+                    <ul class="list">
+                        {% if kitchen.listcontent1 %}<li class="list-item"><b>{{ kitchen.listtitre1 }} :</b> {{ kitchen.listcontent1 }} </li>{% endif %}
+                        {% if kitchen.listcontent2 %}<li class="list-item"><b>{{ kitchen.listtitre2 }} :</b> {{ kitchen.listcontent2 }} </li>{% endif %}
+                        {% if kitchen.listcontent3 %}<li class="list-item"><b>{{ kitchen.listtitre3 }} :</b> {{ kitchen.listcontent3 }} </li>{% endif %}
+                    </ul>
+                </div>    
                 <hr>
             </div>
         </div>

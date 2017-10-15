@@ -33,25 +33,28 @@
 
         <div class="row article">
             <div class="col-md-12">
-                <h1 align="center" class="article-titre">{{ news.titre }}</h1>
-                <img src="{{ asset('uploads/News/Cover/'~news.filename) }}" alt="{{ news.filename }}" class="img-responsive" style="padding: 0 35px;" />
-                <br />
-                <div>
-                    <span class="label label-news" dir="rtl">{{ news.date|date('d-m-Y') }}</span>
-                    <div class="pull-right">
-                        <span class="label label-news" dir="rtl">حرر من طرف {{ news.user }}</span>
+                <div class="addthis_inline_share_toolbox">  
+                    <h1 align="center" class="article-titre">{{ news.titre }}</h1>
+                    <img src="{{ asset('uploads/News/Cover/'~news.filename) }}" alt="{{ news.filename }}" class="img-responsive" style="padding: 0 35px;" />
+                    <br />
+                    <div>
+                        <span class="label label-news" dir="rtl">{{ news.date|date('d-m-Y') }}</span>
+                        <span class="label label-news" dir="rtl" style="position: relative; left:30%;" >عدد المشاهدات  {{ news.views }}</span>
+                        <div class="pull-right">
+                            <span class="label label-news" dir="rtl">حرر من طرف {{ news.user }}</span>
+                        </div>
                     </div>
-                </div>
-                <br />
-                <p>{{ news.content1|nl2br }}</p>
-                <br />
-                {% if news.content2 %}<p>{{ news.content2|nl2br }}</p><br />{% endif %}
-                {% if news.content3 %}<p>{{ news.content3|nl2br }}</p><br />{% endif %}
-                <ul class="list">
-                    {% if news.listcontent1 %}<li class="list-item"><b>{{ news.listtitre1 }} :</b> {{ news.listcontent1 }} </li>{% endif %}
-                    {% if news.listcontent2 %}<li class="list-item"><b>{{ news.listtitre2 }} :</b> {{ news.listcontent2 }} </li>{% endif %}
-                    {% if news.listcontent3 %}<li class="list-item"><b>{{ news.listtitre3 }} :</b> {{ news.listcontent3 }} </li>{% endif %}
-                </ul>
+                    <br />
+                    <p>{{ news.content1|nl2br }}</p>
+                    <br />
+                    {% if news.content2 %}<p>{{ news.content2|nl2br }}</p><br />{% endif %}
+                    {% if news.content3 %}<p>{{ news.content3|nl2br }}</p><br />{% endif %}
+                    <ul class="list">
+                        {% if news.listcontent1 %}<li class="list-item"><b>{{ news.listtitre1 }} :</b> {{ news.listcontent1 }} </li>{% endif %}
+                        {% if news.listcontent2 %}<li class="list-item"><b>{{ news.listtitre2 }} :</b> {{ news.listcontent2 }} </li>{% endif %}
+                        {% if news.listcontent3 %}<li class="list-item"><b>{{ news.listtitre3 }} :</b> {{ news.listcontent3 }} </li>{% endif %}
+                    </ul>
+                </div>    
                 <hr>
             </div>
         </div>

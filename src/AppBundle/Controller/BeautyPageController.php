@@ -123,6 +123,11 @@ class BeautyPageController extends Controller
 
         $sondage = $em->getRepository('AppBundle:Sondage')->find5LatestPublishedArticles();
 
+        $views = $beauty->getViews();
+        $beauty->setViews($views + 1);
+        $em->persist($beauty);
+        $em->flush();
+
         return $this->render('AppBundle:Frontoffice:Beauty/view.html.twig',[
             'beauty'                => $beauty,
             'articlevideo'          => $articlevideo,

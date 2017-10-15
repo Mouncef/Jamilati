@@ -32,26 +32,28 @@
 
         <div class="row article">
             <div class="col-md-12">
-                <h1 align="center" class="article-titre">{{ family.titre }}</h1>
-                <img src="{{ asset('uploads/Family/Cover/'~family.filename) }}" alt="{{ family.filename }}" class="img-responsive" style="padding: 0 35px;" />
-                <br />
-                <div>
-                    <span class="label label-family" dir="rtl">{{ family.date|date('d-m-Y') }}</span>
-
-                    <div class="pull-right">
-                        <span class="label label-family" dir="rtl">حرر من طرف {{ family.user }}</span>
+                <div class="addthis_inline_share_toolbox">
+                    <h1 align="center" class="article-titre">{{ family.titre }}</h1>
+                    <img src="{{ asset('uploads/Family/Cover/'~family.filename) }}" alt="{{ family.filename }}" class="img-responsive" style="padding: 0 35px;" />
+                    <br />
+                    <div>
+                        <span class="label label-family" dir="rtl">{{ family.date|date('d-m-Y') }}</span>
+                        <span class="label label-family" dir="rtl" style="position: relative; left:30%;" >عدد المشاهدات  {{ family.views }}</span>
+                        <div class="pull-right">
+                            <span class="label label-family" dir="rtl">حرر من طرف {{ family.user }}</span>
+                        </div>
                     </div>
-                </div>
-                <br />
-                <p>{{ family.content1|nl2br }}</p>
-                <br />
-                {% if family.content2 %}<p>{{ family.content2|nl2br }}</p><br />{% endif %}
-                {% if family.content3 %}<p>{{ family.content3|nl2br }}</p><br />{% endif %}
-                <ul class="list">
-                    {% if family.listcontent1 %}<li class="list-item"><b>{{ family.listtitre1 }} :</b> {{ family.listcontent1 }} </li>{% endif %}
-                    {% if family.listcontent2 %}<li class="list-item"><b>{{ family.listtitre2 }} :</b> {{ family.listcontent2 }} </li>{% endif %}
-                    {% if family.listcontent3 %}<li class="list-item"><b>{{ family.listtitre3 }} :</b> {{ family.listcontent3 }} </li>{% endif %}
-                </ul>
+                    <br />
+                    <p>{{ family.content1|nl2br }}</p>
+                    <br />
+                    {% if family.content2 %}<p>{{ family.content2|nl2br }}</p><br />{% endif %}
+                    {% if family.content3 %}<p>{{ family.content3|nl2br }}</p><br />{% endif %}
+                    <ul class="list">
+                        {% if family.listcontent1 %}<li class="list-item"><b>{{ family.listtitre1 }} :</b> {{ family.listcontent1 }} </li>{% endif %}
+                        {% if family.listcontent2 %}<li class="list-item"><b>{{ family.listtitre2 }} :</b> {{ family.listcontent2 }} </li>{% endif %}
+                        {% if family.listcontent3 %}<li class="list-item"><b>{{ family.listtitre3 }} :</b> {{ family.listcontent3 }} </li>{% endif %}
+                    </ul>
+                </div>    
                 <hr>
             </div>
         </div>

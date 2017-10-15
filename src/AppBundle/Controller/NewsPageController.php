@@ -124,6 +124,11 @@ class NewsPageController extends Controller
 
         $sondage = $em->getRepository('AppBundle:Sondage')->find5LatestPublishedArticles();
 
+        $views = $news->getViews();
+        $news->setViews($views + 1);
+        $em->persist($news);
+        $em->flush();
+
         return $this->render('AppBundle:Frontoffice:News/view.html.twig',[
             'news'                  => $news,
             'articlevideo'          => $articlevideo,

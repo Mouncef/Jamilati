@@ -32,25 +32,28 @@
 
         <div class="row article">
             <div class="col-md-12">
-                <h1 align="center" class="article-titre">{{ star.titre }}</h1>
-                <img src="{{ asset('uploads/Stars/Cover/'~star.filename) }}" alt="{{ star.filename }}" class="img-responsive" style="padding: 0 35px;" />
-                <br />
-                <div>
-                    <span class="label label-stars" dir="rtl">{{ star.date|date('d-m-Y') }}</span>
-                    <div class="pull-right">
-                        <span class="label label-stars" dir="rtl">حرر من طرف {{ star.user }}</span>
+                <div class="addthis_inline_share_toolbox">  
+                    <h1 align="center" class="article-titre">{{ star.titre }}</h1>
+                    <img src="{{ asset('uploads/Stars/Cover/'~star.filename) }}" alt="{{ star.filename }}" class="img-responsive" style="padding: 0 35px;" />
+                    <br />
+                    <div>
+                        <span class="label label-stars" dir="rtl">{{ star.date|date('d-m-Y') }}</span>
+                        <span class="label label-stars" dir="rtl" style="position: relative; left:30%;" >عدد المشاهدات  {{ star.views }}</span>
+                        <div class="pull-right">
+                            <span class="label label-stars" dir="rtl">حرر من طرف {{ star.user }}</span>
+                        </div>
                     </div>
-                </div>
-                <br />
-                <p>{{ star.content1|nl2br }}</p>
-                <br />
-                {% if star.content2 %}<p>{{ star.content2|nl2br }}</p><br />{% endif %}
-                {% if star.content3 %}<p>{{ star.content3|nl2br }}</p><br />{% endif %}
-                <ul class="list">
-                    {% if star.listcontent1 %}<li class="list-item"><b>{{ star.listtitre1 }} :</b> {{ star.listcontent1 }} </li>{% endif %}
-                    {% if star.listcontent2 %}<li class="list-item"><b>{{ star.listtitre2 }} :</b> {{ star.listcontent2 }} </li>{% endif %}
-                    {% if star.listcontent3 %}<li class="list-item"><b>{{ star.listtitre3 }} :</b> {{ star.listcontent3 }} </li>{% endif %}
-                </ul>
+                    <br />
+                    <p>{{ star.content1|nl2br }}</p>
+                    <br />
+                    {% if star.content2 %}<p>{{ star.content2|nl2br }}</p><br />{% endif %}
+                    {% if star.content3 %}<p>{{ star.content3|nl2br }}</p><br />{% endif %}
+                    <ul class="list">
+                        {% if star.listcontent1 %}<li class="list-item"><b>{{ star.listtitre1 }} :</b> {{ star.listcontent1 }} </li>{% endif %}
+                        {% if star.listcontent2 %}<li class="list-item"><b>{{ star.listtitre2 }} :</b> {{ star.listcontent2 }} </li>{% endif %}
+                        {% if star.listcontent3 %}<li class="list-item"><b>{{ star.listtitre3 }} :</b> {{ star.listcontent3 }} </li>{% endif %}
+                    </ul>
+                </div>    
                 <hr>
             </div>
         </div>

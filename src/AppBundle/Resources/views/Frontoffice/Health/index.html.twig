@@ -7,7 +7,10 @@
 
 {% block title %} - صحة {{ parent() }}{% endblock %}
 
- {% block Articles %}
+{% block noloader %}{% endblock %}
+{% block loader %}{% endblock %}
+
+{% block Articles %}
      <style>
          .filter-button
          {
@@ -140,6 +143,31 @@
      </div>
      <hr class="endhealth" />
      <br />
+{% endblock %}
 
-
- {% endblock %}
+{% block Myjavascript %}
+<script>
+    window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.12.0.min.js"><\/script>')
+</script>
+<script>
+    $(window).load(function(){
+        if((navigator.userAgent.indexOf("Chrome") >= 0) || (navigator.userAgent.indexOf("OS") >= 0)){
+            var assetstyle = "/assets/css/style.css";
+            var assetresponsive = "/assets/css/responsive.css";
+            $("#csslink").attr("href", assetstyle);
+            $("#responsivelink").attr("href", assetresponsive);
+            $('#contentprincipal').fadeIn(1000);
+        } else if(navigator.userAgent.indexOf("Firefox") >= 0){
+            var assetstyle = "/assets/css/style.css";
+            var assetresponsive = "/assets/css/responsive.css";
+            $("#csslink").attr("href", assetstyle);
+            $("#responsivelink").attr("href", assetresponsive);
+            $('#contentprincipal').fadeIn(1000);
+        } else {
+           alert("Votre navigateur est inadéquat veuillez accéder à notre site via l'un de ces navigateurs (Google Chrome, Mozilla Firefox ou Opera) !");
+           $(".loadersection #message").text("جميلتي تشكركم على زيارتكم ٠٠٠");
+           $('.loadersection').fadeIn(1000);
+        }
+    });
+</script>
+{% endblock %}

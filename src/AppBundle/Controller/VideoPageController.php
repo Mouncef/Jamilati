@@ -125,6 +125,11 @@ class VideoPageController extends Controller
 
         $sondage = $em->getRepository('AppBundle:Sondage')->find5LatestPublishedArticles();
 
+        $views = $video->getViews();
+        $video->setViews($views + 1);
+        $em->persist($video);
+        $em->flush();
+
         return $this->render('AppBundle:Frontoffice:Video/view.html.twig',[
             'video'                 => $video,
             'articlevideo'          => $articlevideo,

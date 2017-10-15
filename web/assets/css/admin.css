@@ -116,3 +116,11 @@ body {
   direction: rtl;
 }
 
+.label-mode {background-color: #4a1f8e;}
+.label-beauty {background-color: #3894e0;}
+.label-kitchen {background-color: #35c4b8;}
+.label-health {background-color: #14bc39;}
+.label-family {background-color: #91f209;}
+.label-news {background-color: #fce305;}
+.label-stars {background-color: #fc7f02;}
+.label-videos {background-color: #db0000;}

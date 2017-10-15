@@ -124,6 +124,11 @@ class HealthPageController extends Controller
 
         $sondage = $em->getRepository('AppBundle:Sondage')->find5LatestPublishedArticles();
 
+        $views = $health->getViews();
+        $health->setViews($views + 1);
+        $em->persist($health);
+        $em->flush();
+
         return $this->render('AppBundle:Frontoffice:Health/view.html.twig',[
             'health'                => $health,
             'articlevideo'          => $articlevideo,

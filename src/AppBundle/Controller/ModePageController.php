@@ -126,6 +126,11 @@ class ModePageController extends Controller
 
         $sondage = $em->getRepository('AppBundle:Sondage')->find5LatestPublishedArticles();
 
+        $views = $mode->getViews();
+        $mode->setViews($views + 1);
+        $em->persist($mode);
+        $em->flush();
+
         return $this->render('AppBundle:Frontoffice:Mode/view.html.twig',[
             'mode'                  => $mode,
             'articlevideo'          => $articlevideo,

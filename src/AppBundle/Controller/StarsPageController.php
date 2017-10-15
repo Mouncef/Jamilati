@@ -123,6 +123,11 @@ class StarsPageController extends Controller
 
         $sondage = $em->getRepository('AppBundle:Sondage')->find5LatestPublishedArticles();
 
+        $views = $star->getViews();
+        $star->setViews($views + 1);
+        $em->persist($star);
+        $em->flush();
+
         return $this->render('AppBundle:Frontoffice:Stars/view.html.twig',[
             'star'                  => $star,
             'articlevideo'          => $articlevideo,

@@ -27,14 +27,18 @@
 		  });
 		</script>
     </head>
+
     <body>
-		<div class="loadersection">
-            
-			<span id="message">جميلتي ترحب بكم ٠٠٠</span>
-            <span class="loader loader-quart"></span> 
-        </div>
-		
-            
+
+    	{% block loader %}
+			<div class="loadersection">
+				<span id="message">جميلتي ترحب بكم ٠٠٠</span>
+	            <span class="loader loader-quart"></span> 
+	        </div>
+		{% endblock %}
+        
+        {% block noloader %}
+        {% endblock %}    
         
         <div id="contentprincipal">
 		
@@ -300,32 +304,34 @@
 			<!--Fin Section Footer -->
 		</div>	
         {% block javascripts %}
-            <script>
-				window.jQuery || document.write('<script src="{{ asset('assets/js/vendor/jquery-1.12.0.min.js') }}"><\/script>')
-			</script>
-			<script>
-				$(window).load(function(){
-					$('.loadersection').fadeOut(5000, function(){
-						if((navigator.userAgent.indexOf("Chrome") >= 0) || (navigator.userAgent.indexOf("OS") >= 0)){
-							var assetstyle = "{{ asset('assets/css/style.css') }}";
-							var assetresponsive = "{{ asset('assets/css/responsive.css') }}";
-							$("#csslink").attr("href", assetstyle);
-							$("#responsivelink").attr("href", assetresponsive);
-							$('#contentprincipal').fadeIn(1000);
-						} else if(navigator.userAgent.indexOf("Firefox") >= 0){
-							var assetstyle = "{{ asset('assets/css/style.css') }}";
-							var assetresponsive = "{{ asset('assets/css/responsive.css') }}";
-							$("#csslink").attr("href", assetstyle);
-							$("#responsivelink").attr("href", assetresponsive);
-							$('#contentprincipal').fadeIn(1000);
-						} else {
-						   alert("Votre navigateur est inadéquat veuillez accéder à notre site via l'un de ces navigateurs (Google Chrome, Mozilla Firefox ou Opera) !");
-						   $(".loadersection #message").text("جميلتي تشكركم على زيارتكم ٠٠٠");
-						   $('.loadersection').fadeIn(1000);
-						}
+        	{% block Myjavascript %}
+	            <script>
+					window.jQuery || document.write('<script src="{{ asset('assets/js/vendor/jquery-1.12.0.min.js') }}"><\/script>')
+				</script>
+				<script>
+					$(window).load(function(){
+						$('.loadersection').fadeOut(5000, function(){
+							if((navigator.userAgent.indexOf("Chrome") >= 0) || (navigator.userAgent.indexOf("OS") >= 0)){
+								var assetstyle = "{{ asset('assets/css/style.css') }}";
+								var assetresponsive = "{{ asset('assets/css/responsive.css') }}";
+								$("#csslink").attr("href", assetstyle);
+								$("#responsivelink").attr("href", assetresponsive);
+								$('#contentprincipal').fadeIn(1000);
+							} else if(navigator.userAgent.indexOf("Firefox") >= 0){
+								var assetstyle = "{{ asset('assets/css/style.css') }}";
+								var assetresponsive = "{{ asset('assets/css/responsive.css') }}";
+								$("#csslink").attr("href", assetstyle);
+								$("#responsivelink").attr("href", assetresponsive);
+								$('#contentprincipal').fadeIn(1000);
+							} else {
+							   alert("Votre navigateur est inadéquat veuillez accéder à notre site via l'un de ces navigateurs (Google Chrome, Mozilla Firefox ou Opera) !");
+							   $(".loadersection #message").text("جميلتي تشكركم على زيارتكم ٠٠٠");
+							   $('.loadersection').fadeIn(1000);
+							}
+						});
 					});
-				});
-            </script>
+		    	</script>
+		    {% endblock %}	
             <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
             <script src="{{ asset('assets/js/plugins.js') }}"></script>
             <script src="{{ asset('assets/js/main.js') }}"></script>
@@ -341,7 +347,8 @@
 			  ga('send', 'pageview');
 			</script>
 
-            
+            <!-- Go to www.addthis.com/dashboard to customize your tools --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-59e37add4f31721f"></script> 
         {% endblock %}
+
     </body>
 </html>

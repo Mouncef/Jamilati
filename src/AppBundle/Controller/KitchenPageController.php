@@ -123,6 +123,11 @@ class KitchenPageController extends Controller
         $articleimgday = $this->getDoctrine()->getRepository('AppBundle:DayPicture')->findAll();
         $sondage = $em->getRepository('AppBundle:Sondage')->find5LatestPublishedArticles();
 
+        $views = $kitchen->getViews();
+        $kitchen->setViews($views + 1);
+        $em->persist($kitchen);
+        $em->flush();
+
         return $this->render('AppBundle:Frontoffice:Kitchen/view.html.twig',[
             'kitchen'               => $kitchen,
             'articlevideo'          => $articlevideo,

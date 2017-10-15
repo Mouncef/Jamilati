@@ -31,27 +31,30 @@
 
         <div class="row article">
             <div class="col-md-12">
-                <h1 align="center" class="article-titre">{{ video.titre }}</h1>
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="{{ video.url }}" style="padding: 0 35px;" ></iframe>
-                </div>
-                <br />
-                <div>
-                    <span class="label label-videos" dir="rtl">{{ video.date|date('d-m-Y') }}</span>
-                    <div class="pull-right">
-                        <span class="label label-videos" dir="rtl">حرر من طرف {{ video.user }}</span>
+                <div class="addthis_inline_share_toolbox">  
+                    <h1 align="center" class="article-titre">{{ video.titre }}</h1>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="{{ video.url }}" style="padding: 0 35px;" ></iframe>
                     </div>
-                </div>
-                <br />
-                <p>{{ video.content1|nl2br }}</p>
-                <br />
-                {% if video.content2 %}<p>{{ video.content2|nl2br }}</p><br />{% endif %}
-                {% if video.content3 %}<p>{{ video.content3|nl2br }}</p><br />{% endif %}
-                <ul class="list">
-                    {% if video.listcontent1 %}<li class="list-item"><b>{{ video.listtitre1 }} :</b> {{ video.listcontent1 }} </li>{% endif %}
-                    {% if video.listcontent2 %}<li class="list-item"><b>{{ video.listtitre2 }} :</b> {{ video.listcontent2 }} </li>{% endif %}
-                    {% if video.listcontent3 %}<li class="list-item"><b>{{ video.listtitre3 }} :</b> {{ video.listcontent3 }} </li>{% endif %}
-                </ul>
+                    <br />
+                    <div>
+                        <span class="label label-videos" dir="rtl">{{ video.date|date('d-m-Y') }}</span>
+                        <span class="label label-videos" dir="rtl" style="position: relative; left:30%;" >عدد المشاهدات  {{ video.views }}</span>
+                        <div class="pull-right">
+                            <span class="label label-videos" dir="rtl">حرر من طرف {{ video.user }}</span>
+                        </div>
+                    </div>
+                    <br />
+                    <p>{{ video.content1|nl2br }}</p>
+                    <br />
+                    {% if video.content2 %}<p>{{ video.content2|nl2br }}</p><br />{% endif %}
+                    {% if video.content3 %}<p>{{ video.content3|nl2br }}</p><br />{% endif %}
+                    <ul class="list">
+                        {% if video.listcontent1 %}<li class="list-item"><b>{{ video.listtitre1 }} :</b> {{ video.listcontent1 }} </li>{% endif %}
+                        {% if video.listcontent2 %}<li class="list-item"><b>{{ video.listtitre2 }} :</b> {{ video.listcontent2 }} </li>{% endif %}
+                        {% if video.listcontent3 %}<li class="list-item"><b>{{ video.listtitre3 }} :</b> {{ video.listcontent3 }} </li>{% endif %}
+                    </ul>
+                </div>    
                 <hr>
             </div>
         </div>

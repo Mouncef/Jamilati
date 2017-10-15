@@ -172,8 +172,64 @@
                                                     </button>
                                                 </a>
                                             {% endif %}
+                                            <a href="#">
+                                              <button type="button" data-toggle="modal" data-target="#article-{{ article.id }}" title="Afficher" class="btn btn-primary btn-sm">
+                                                <span class="glyphicon glyphicon-sunglasses"></span>
+                                              </button>
+                                            </a>
                                         </td>
                                     </tr>
+
+                                    <!--------------------Afficher Article Modal-------------------------------------->
+                                    <div id="article-{{ article.id }}" class="modal fade" role="dialog">
+                                      <div class="modal-dialog modal-lg">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <button type="button" style="float: left;" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">{{ article.titre }}</h4>
+                                          </div>
+                                          <div class="modal-body">
+                                            <div class="row article">
+                                              <div class="col-md-12">
+                                                <h1 align="center" class="article-titre">{{ article.titre }}</h1>
+                                                <img src="{{ asset('uploads/Stars/Cover/'~article.filename) }}" alt="{{ article.filename }}" class="img-responsive" style="padding: 0 35px;"/>
+                                                <br />
+                                                <div>
+                                                  <div class="pull-left">
+                                                    <span class="label label-stars" dir="rtl">{{ article.date|date('d-m-Y') }}</span>  
+                                                  </div>
+                                                  <div class="pull-right">
+                                                    <span class="label label-stars" dir="rtl">حرر من طرف {{ article.user }}</span>
+                                                  </div>
+                                                </div>
+                                                <br />
+                                                <br />
+                                                <p>{{ article.content1|nl2br }}</p>
+                                                <br />
+                                                {% if article.content2 %}<p>{{ article.content2|nl2br }}</p><br />{% endif %}
+                                                {% if article.content3 %}<p>{{ article.content3|nl2br }}</p><br />{% endif %}
+                                                <ul class="list">
+                                                  {% if article.listcontent1 %}
+                                                    <li class="list-item"><b>{{ article.listtitre1 }} :</b> {{ article.listcontent1 }} </li>
+                                                  {% endif %}
+                                                  {% if article.listcontent2 %}
+                                                    <li class="list-item"><b>{{ article.listtitre2 }} :</b> {{ article.listcontent2 }} </li>
+                                                  {% endif %}
+                                                  {% if article.listcontent3 %}
+                                                    <li class="list-item"><b>{{ article.listtitre3 }} :</b> {{ article.listcontent3 }} </li>
+                                                  {% endif %}
+                                                </ul>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
                                 {% endfor %}
                                 </tbody>
                             </table>

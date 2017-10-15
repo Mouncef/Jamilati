@@ -124,6 +124,11 @@ class FamilyPageController extends Controller
 
         $sondage = $em->getRepository('AppBundle:Sondage')->find5LatestPublishedArticles();
 
+        $views = $family->getViews();
+        $family->setViews($views + 1);
+        $em->persist($family);
+        $em->flush();
+
         return $this->render('AppBundle:Frontoffice:Family/view.html.twig',[
             'family'                => $family,
             'articlevideo'          => $articlevideo,
