@@ -43,12 +43,14 @@
                     <div class="page-header row text-right">
                         <div class="col-xs-12">
                             <div class="col-md-2 col-xs-12 pull-right">
-                                {#<a href="{{ path('jamilati_admin_da_addarticle')}}">
+                                {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                <a href="{{ path('jamilati_admin_da_addarticle')}}">
                                     <button type="button" class="btn btn-primary">
                                         idafa
                                         <span class="glyphicon glyphicon-plus"></span>
                                     </button>
-                                </a>#}
+                                </a>
+                                {% endif %}
                             </div>
 
                             <div class="col-md-10 col-xs-12">
@@ -81,11 +83,13 @@
                                                     <span class="glyphicon glyphicon-edit"></span>
                                                 </button>
                                             </a>
-                                            {#<a href="{{ path('jamilati_admin_da_removearticle', {'id': article.id}) }}">
+                                            {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                            <a href="{{ path('jamilati_admin_da_removearticle', {'id': article.id}) }}">
                                                 <button type="button" title="Supprimer" class="btn btn-danger btn-sm">
                                                     <span class="glyphicon glyphicon-trash"></span>
                                                 </button>
-                                            </a>#}
+                                            </a>
+                                            {% endif %}
                                         </td>
                                     </tr>
                                 {% endfor %}

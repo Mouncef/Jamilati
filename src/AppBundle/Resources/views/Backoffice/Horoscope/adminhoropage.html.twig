@@ -43,14 +43,14 @@
                     <div class="page-header row text-right">
                         <div class="col-xs-12">
                             <div class="col-md-2 col-xs-12 pull-right">
-                                {#
+                                {% if is_granted('ROLE_SUPER_ADMIN') %}
                                 <a href="{{ path('jamilati_admin_horo_addarticle')}}">
                                     <button type="button" class="btn btn-primary">
                                         idafa
                                         <span class="glyphicon glyphicon-plus"></span>
                                     </button>
                                 </a>
-                                #}
+                                {% endif %}
                             </div>
 
                             <div class="col-md-10 col-xs-12">
@@ -83,13 +83,13 @@
                                                     <span class="glyphicon glyphicon-edit"></span>
                                                 </button>
                                             </a>
-                                            {#
+                                            {% if is_granted('ROLE_SUPER_ADMIN') %}
                                             <a href="{{ path('jamilati_admin_horo_removearticle', {'id': article.id}) }}">
                                                 <button type="button" title="Supprimer" class="btn btn-danger btn-sm">
                                                     <span class="glyphicon glyphicon-trash"></span>
                                                 </button>
                                             </a>
-                                            #}
+                                            {% endif %}
                                         </td>
                                     </tr>
                                 {% endfor %}
